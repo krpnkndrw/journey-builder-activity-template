@@ -46,7 +46,7 @@ define(["postmonger"], function (Postmonger) {
 
   function initialize(data) {
     console.log("custom test 1");
-    console.log(JSON.stringify(data));
+    console.log(data);
     if (data) {
       payload = data;
     }
