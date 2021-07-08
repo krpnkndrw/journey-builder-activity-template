@@ -1,6 +1,7 @@
 define(["postmonger"], function (Postmonger) {
   "use strict";
 
+  var jsforce = require("jsforce");
   var connection = new Postmonger.Session();
   var authTokens = {};
   var payload = {};
@@ -46,6 +47,13 @@ define(["postmonger"], function (Postmonger) {
 
   function initialize(data) {
     console.log("custom test 1");
+    const conn = new jsforce.Connection({
+      loginUrl: "https://test.salesforce.com",
+      instanceUrl: "https://cs16.salesforce.com",
+    });
+
+    console.log(conn);
+
     console.log(data);
     if (data) {
       payload = data;
