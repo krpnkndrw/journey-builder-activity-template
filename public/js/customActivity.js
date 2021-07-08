@@ -1,4 +1,4 @@
-define(["postmonger"], function (Postmonger) {
+define(["postmonger", "jsforce"], function (Postmonger) {
   "use strict";
 
   var jsforce = require("jsforce");
