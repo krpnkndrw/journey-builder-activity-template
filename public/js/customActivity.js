@@ -1,11 +1,50 @@
-define(["postmonger", "require", "jsforce"], function (Postmonger) {
+define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
   "use strict";
 
-  var jsforce = require("jsforce");
   var connection = new Postmonger.Session();
   var authTokens = {};
   var payload = {};
   $(window).ready(onRender);
+
+  console.log("custom test 1");
+  const getAllData = async () => {
+    const response = await fetch("/test");
+    const body = await response.json();
+    console.log(body);
+  };
+  getAllData();
+
+  const CONFIGSF = {
+    salesforceName: "dev1@onpoint.ru",
+    salesforcePassword: "ilove2test",
+    salesforceSecurityToken: "HQXZauOH0NggWOVERV042UWs1",
+    salesforceLoginUrl: "https://test.salesforce.com",
+    salesforceInstanceUrl: "https://cs16.salesforce.com",
+    ftpHost: "crm-13-ftp-us.veevacrm.com",
+    ftpUser: "a@onpoint.ru",
+    ftpPassword: "ilove2test",
+  };
+  const conn = new jsforce.Connection({
+    loginUrl: CONFIGSF.salesforceLoginUrl,
+    instanceUrl: CONFIGSF.salesforceInstanceUrl,
+  });
+  function connect() {
+    return new Promise((resolve, reject) => {
+      conn.login(
+        CONFIGSF.salesforceName,
+        CONFIGSF.salesforcePassword + CONFIGSF.salesforceSecurityToken,
+        function (err, res) {
+          if (err) {
+            reject(err);
+          }
+          resolve(res);
+        }
+      );
+    });
+  }
+  (async () => {
+    await connect();
+  })();
 
   connection.on("initActivity", initialize);
   connection.on("requestedTokens", onGetTokens);
@@ -46,14 +85,6 @@ define(["postmonger", "require", "jsforce"], function (Postmonger) {
   }
 
   function initialize(data) {
-    console.log("custom test 1");
-    const conn = new jsforce.Connection({
-      loginUrl: "https://test.salesforce.com",
-      instanceUrl: "https://cs16.salesforce.com",
-    });
-
-    console.log(conn);
-
     console.log(data);
     if (data) {
       payload = data;
