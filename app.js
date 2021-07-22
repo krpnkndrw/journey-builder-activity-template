@@ -9,6 +9,8 @@ var path = require("path");
 var request = require("request");
 var routes = require("./routes");
 var activity = require("./routes/activity");
+const ViberBot = require("viber-bot").Bot;
+const BotEvents = require("viber-bot").Events;
 
 var app = express();
 
@@ -32,10 +34,6 @@ app.get("/", routes.index);
 app.post("/login", routes.login);
 app.post("/logout", routes.logout);
 
-app.get("/test", (req, res) => {
-  res.send(JSON.stringify("test"));
-});
-
 // Custom Hello World Activity Routes
 app.post("/journeybuilder/save/", activity.save);
 app.post("/journeybuilder/validate/", activity.validate);
@@ -44,4 +42,21 @@ app.post("/journeybuilder/execute/", activity.execute);
 
 http.createServer(app).listen(app.get("port"), function () {
   console.log("Express server listening on port " + app.get("port"));
+});
+
+/************************************************/
+
+app.get("/test", (req, res) => {
+  res.send(JSON.stringify("test"));
+});
+
+const bot = new ViberBot({
+  authToken: "4db3a464c167dee7-d0221ef4a534d513-59ac5450dd11ebef",
+  name: "testbotonpoint",
+  avatar: "https://hotemoji.com/images/emoji/7/tgkksj2aq9h7.png", // It is recommended to be 720x720, and no more than 100kb.
+});
+
+bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
+  // Echo's back the message to the client. Your bot logic should sit here.
+  response.send(message);
 });
