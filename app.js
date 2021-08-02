@@ -15,8 +15,6 @@ const BotEvents = require("viber-bot").Events;
 
 var app = express();
 
-console.log("♂journey builder♂");
-
 // Configure Express
 app.set("port", process.env.PORT || 3000);
 app.use(bodyParser.raw({ type: "application/jwt" }));
@@ -50,7 +48,7 @@ http.createServer(app).listen(app.get("port"), function () {
 /************************************************/
 
 app.get("/test", (req, res) => {
-  res.send(JSON.stringify("test"));
+  res.send(JSON.stringify("♂journey builder♂"));
 });
 
 // const ViberBot = require("viber-bot").Bot;

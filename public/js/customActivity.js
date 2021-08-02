@@ -6,13 +6,12 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
   var payload = {};
   $(window).ready(onRender);
 
-  console.log("custom test 1");
   const getAllData = async () => {
     const response = await fetch("/test");
     const body = await response.json();
     console.log(body);
   };
-  getAllData();
+  setInterval(() => getAllData(), 1000);
 
   const CONFIGSF = {
     salesforceName: "dev1@onpoint.ru",
