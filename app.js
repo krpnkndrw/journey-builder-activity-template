@@ -15,6 +15,8 @@ const BotEvents = require("viber-bot").Events;
 
 var app = express();
 
+console.log("♂journey builder♂");
+
 // Configure Express
 app.set("port", process.env.PORT || 3000);
 app.use(bodyParser.raw({ type: "application/jwt" }));
