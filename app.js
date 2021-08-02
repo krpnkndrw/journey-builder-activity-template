@@ -5,12 +5,11 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var errorhandler = require("errorhandler");
 var http = require("http");
+var https = require("https");
 var path = require("path");
 var request = require("request");
 var routes = require("./routes");
 var activity = require("./routes/activity");
-const ViberBot = require("viber-bot").Bot;
-const BotEvents = require("viber-bot").Events;
 
 var app = express();
 
@@ -50,6 +49,10 @@ app.get("/test", (req, res) => {
   res.send(JSON.stringify("test"));
 });
 
+
+const ViberBot = require("viber-bot").Bot;
+const BotEvents = require("viber-bot").Events;
+
 const bot = new ViberBot({
   authToken: "4db3a464c167dee7-d0221ef4a534d513-59ac5450dd11ebef",
   name: "testbotonpoint",
@@ -60,3 +63,16 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
   // Echo's back the message to the client. Your bot logic should sit here.
   response.send(message);
 });
+const https = require('https');
+const botport = process.env.PORT || 8080;
+
+const webhookUrl = "https://andreyka-jb-test2.herokuapp.com/";
+const httpsOptions = {
+	key: ...,
+	cert: ...,
+	ca: ...
+}; // Trusted SSL certification (not self-signed).
+
+https
+  .createServer(httpsOptions, bot.middleware())
+  .listen(botport, () => bot.setWebhook(webhookUrl));
