@@ -10,6 +10,8 @@ var path = require("path");
 var request = require("request");
 var routes = require("./routes");
 var activity = require("./routes/activity");
+const ViberBot = require("viber-bot").Bot;
+const BotEvents = require("viber-bot").Events;
 
 var app = express();
 
