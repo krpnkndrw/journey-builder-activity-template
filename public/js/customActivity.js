@@ -64,6 +64,7 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
   function onRequestedDataSources(dataSources) {
     console.log("*** requestedDataSources ***");
     console.log(dataSources);
+    createSuggestion(suggestion);
   }
 
   function onRequestedInteraction(interaction) {
