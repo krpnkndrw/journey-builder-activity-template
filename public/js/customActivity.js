@@ -17,15 +17,6 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
     const body = await response.json();
     console.log(body);
   };
-
-  const suggestion = {
-    Title_vod__c: "Ваше письмо не прочитали",
-    Reason_vod__c: "Вы лох",
-    Account_vod__c: "001f000001iIxQ9AAK",
-    Expiration_Date_vod__c: "2021-09-18",
-    Record_Type_Name_vod__c: "Email_vod",
-    Priority_vod__c: "Urgent_vod",
-  };
   setTimeout(() => getgetget("/test"), 1000);
 
   const suggestion = {
