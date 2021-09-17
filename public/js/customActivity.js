@@ -19,15 +19,6 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
   };
   setTimeout(() => getgetget("/test"), 1000);
 
-  const suggestion = {
-    Title_vod__c: "Ваше письмо не прочитали",
-    Reason_vod__c: "Вы лох2",
-    Account_vod__c: "001f000001iIxQ9AAK",
-    Expiration_Date_vod__c: "2021-09-18",
-    Record_Type_Name_vod__c: "Email_vod",
-    Priority_vod__c: "Urgent_vod",
-  };
-
   setTimeout(
     () =>
       postpostpost("/test2", {
@@ -35,7 +26,14 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
         headers: {
           "Content-Type": "application/json;charset=utf-8",
         },
-        body: JSON.stringify(suggestion),
+        body: JSON.stringify({
+          Title_vod__c: "Ваше письмо не прочитали",
+          Reason_vod__c: "Вы лох2",
+          Account_vod__c: "001f000001iIxQ9AAK",
+          Expiration_Date_vod__c: "2021-09-18",
+          Record_Type_Name_vod__c: "Email_vod",
+          Priority_vod__c: "Urgent_vod",
+        }),
       }),
     2000
   );
