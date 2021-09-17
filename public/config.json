@@ -54,14 +54,21 @@
     "userInterfaces": {
         "configModal": {
             "height": 400,
-            "width": 1000,
+            "width": 400,
           "fullscreen": false
         }
     },
     "schema": {
         "arguments": {
             "execute": {
-                "inArguments": [],
+                "inArguments": [  
+                  {
+                  "emailAddress": {
+                    "dataType": "Email",
+                    "isNullable": false,
+                    "direction": "in"
+                  }
+                }],
                 "outArguments": []
             }
         }
