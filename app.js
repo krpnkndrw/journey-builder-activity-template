@@ -18,8 +18,9 @@ var app = express();
 
 // Configure Express
 app.set("port", process.env.PORT || 3000);
-app.use(bodyParser.raw({ type: "application/jwt" }));
+//app.use(bodyParser.raw({ type: "application/jwt" }));
 //app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 
 //app.use(express.methodOverride());
 //app.use(express.favicon());
@@ -99,30 +100,3 @@ app.post("/test2", (req, res) => {
 app.get("/test", (req, res) => {
   res.send(JSON.stringify("♂♂♂♂"));
 });
-
-// const ViberBot = require("viber-bot").Bot;
-// const BotEvents = require("viber-bot").Events;
-
-// const bot = new ViberBot({
-//   authToken: "4db3a464c167dee7-d0221ef4a534d513-59ac5450dd11ebef",
-//   name: "testbotonpoint",
-//   avatar: "https://hotemoji.com/images/emoji/7/tgkksj2aq9h7.png", // It is recommended to be 720x720, and no more than 100kb.
-// });
-
-// bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
-//   // Echo's back the message to the client. Your bot logic should sit here.
-//   response.send(message);
-// });
-// const https = require('https');
-// const botport = process.env.PORT || 8080;
-
-// const webhookUrl = "https://andreyka-jb-test2.herokuapp.com/";
-// const httpsOptions = {
-// 	key: ...,
-// 	cert: ...,
-// 	ca: ...
-// }; // Trusted SSL certification (not self-signed).
-
-// https
-//   .createServer(httpsOptions, bot.middleware())
-//   .listen(botport, () => bot.setWebhook(webhookUrl));
