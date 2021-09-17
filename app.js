@@ -76,15 +76,6 @@ function connect() {
   });
 }
 
-const suggestion = {
-  Title_vod__c: "Ваше письмо не прочитали",
-  Reason_vod__c: "Вы лох",
-  Account_vod__c: "001f000001iIxQ9AAK",
-  Expiration_Date_vod__c: "2021-09-18",
-  Record_Type_Name_vod__c: "Email_vod",
-  Priority_vod__c: "Urgent_vod",
-};
-
 const createSuggestion = (suggestion) => {
   return new Promise((resolve, reject) => {
     conn.sobject("Suggestion_vod__c").create(suggestion, function (err, res) {
@@ -95,14 +86,17 @@ const createSuggestion = (suggestion) => {
     });
   });
 };
-app.get("/test", (req, res) => {
-  connect()
+app.post("/test2", (req, res) => {
+  console.log(req);
+  res.send(JSON.stringify(req));
+  //res.send(JSON.stringify(JSON.stringify(req)));
+  /*connect()
     .then(() => createSuggestion(suggestion))
     .then((result) => {
       res.send(JSON.stringify(result));
-    });
+    });*/
 });
-app.get("/test2", (req, res) => {
+app.get("/test", (req, res) => {
   res.send(JSON.stringify("♂♂♂"));
 });
 

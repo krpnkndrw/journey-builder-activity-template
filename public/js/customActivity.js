@@ -6,13 +6,30 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
   var payload = {};
   $(window).ready(onRender);
 
-  const getgetget = async (path) => {
-    const response = await fetch(path);
+  const fetchF = async (path, suggestion) => {
+    const body = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify(suggestion),
+    };
+    const message = arguments.length > 1 ? [path, body] : [path];
+    const response = await fetch(...message);
+    console.log(response);
     const body = await response.json();
     console.log(body);
   };
-  setTimeout(() => getgetget("/test"), 1000);
-  setTimeout(() => getgetget("/test2"), 2000);
+  const suggestion = {
+    Title_vod__c: "Ваше письмо не прочитали",
+    Reason_vod__c: "Вы лох",
+    Account_vod__c: "001f000001iIxQ9AAK",
+    Expiration_Date_vod__c: "2021-09-18",
+    Record_Type_Name_vod__c: "Email_vod",
+    Priority_vod__c: "Urgent_vod",
+  };
+  setTimeout(() => fetchF("/test"), 1000);
+  setTimeout(() => fetchF("/test2", suggestion), 2000);
 
   connection.on("initActivity", initialize);
   connection.on("requestedTokens", onGetTokens);
