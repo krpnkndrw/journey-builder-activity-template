@@ -88,7 +88,7 @@ const createSuggestion = (suggestion) => {
 };
 app.post("/test2", (req, res) => {
   console.log(req);
-  res.send(JSON.stringify(req));
+  res.json({ requestBody: req.body });
   //res.send(JSON.stringify(JSON.stringify(req)));
   /*connect()
     .then(() => createSuggestion(suggestion))
