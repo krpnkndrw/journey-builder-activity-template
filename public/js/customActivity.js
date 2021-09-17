@@ -28,10 +28,10 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
     Record_Type_Name_vod__c: "Email_vod",
     Priority_vod__c: "Urgent_vod",
   };
-  setTimeout(() => fetchF("/test"), 1000);
+  setTimeout(() => fetch("/test"), 1000);
   setTimeout(
     () =>
-      fetchF("/test2", {
+      fetch("/test2", {
         method: "POST",
         headers: {
           "Content-Type": "application/json;charset=utf-8",
