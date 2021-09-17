@@ -6,12 +6,13 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
   var payload = {};
   $(window).ready(onRender);
 
-  const getAllData = async () => {
-    const response = await fetch("/test");
+  const getgetget = async (path) => {
+    const response = await fetch(path);
     const body = await response.json();
     console.log(body);
   };
-  setTimeout(() => getAllData(), 1000);
+  setTimeout(() => getgetget("/test"), 1000);
+  setTimeout(() => getgetget("/test2"), 2000);
 
   connection.on("initActivity", initialize);
   connection.on("requestedTokens", onGetTokens);
