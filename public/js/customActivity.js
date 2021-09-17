@@ -24,9 +24,21 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
     console.log(parsedResponse);
   };
 
+  const sendLog = async (log) => {
+    const response = await fetch("/log", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify(log),
+    });
+    const parsedResponse = await response.json();
+    console.log(parsedResponse);
+  };
+
   const suggestion = {
     Title_vod__c: "Ваше письмо не прочитали",
-    Reason_vod__c: "Вы лох3",
+    Reason_vod__c: "Вы лох4",
     Account_vod__c: "001f000001iIxQ9AAK",
     Expiration_Date_vod__c: "2021-10-17",
     Record_Type_Name_vod__c: "Email_vod",
@@ -47,6 +59,15 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
     onRequestedTriggerEventDefinition
   );
   connection.on("requestedDataSources", onRequestedDataSources);
+  connection.on("updateSteps", onUpdateSteps);
+  connection.on("gotoStep", onGotoStep);
+  connection.on("requestedCulture", onRequestedCulture);
+  connection.on("requestedInteractionDefaults", onRequestedInteractionDefaults);
+  connection.on("requestedInteraction", onRequestedInteraction);
+  connection.on(
+    "requestedTriggerEventDefinition",
+    onRequestedTriggerEventDefinition
+  );
 
   connection.on("clickedNext", save);
 
@@ -61,23 +82,63 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
     connection.trigger("requestDataSources");
   }
 
+  function onRequestedTriggerEventDefinition(data) {
+    console.log("*** requestedTriggerEventDefinition ***");
+    console.log(data);
+    sendLog({ requestedTriggerEventDefinition: data });
+  }
+
+  function onRequestedInteraction(data) {
+    console.log("*** requestedInteraction ***");
+    console.log(data);
+    sendLog({ requestedInteraction: data });
+  }
+
+  function onRequestedInteractionDefaults(data) {
+    console.log("*** requestedInteractionDefaults ***");
+    console.log(data);
+    sendLog({ requestedInteractionDefaults: data });
+  }
+
+  function onRequestedCulture(data) {
+    console.log("*** onRequestedCulture ***");
+    console.log(data);
+    sendLog({ onRequestedCulture: data });
+  }
+
+  function onGotoStep(data) {
+    console.log("*** gotoStep ***");
+    console.log(stepObject);
+    sendLog({ gotoStep: data });
+  }
+
+  function onUpdateSteps(data) {
+    console.log("*** updateSteps ***");
+    console.log(stepObject);
+    sendLog({ updateSteps: data });
+  }
+
   function onRequestedDataSources(dataSources) {
     console.log("*** requestedDataSources ***");
     console.log(dataSources);
     createSuggestion(suggestion);
+    sendLog({ requestedDataSources: dataSources });
   }
 
   function onRequestedInteraction(interaction) {
     console.log("*** requestedInteraction ***");
     console.log(interaction);
+    sendLog({ requestedInteraction: interaction });
   }
 
   function onRequestedTriggerEventDefinition(eventDefinitionModel) {
     console.log("*** requestedTriggerEventDefinition ***");
     console.log(eventDefinitionModel);
+    sendLog({ requestedTriggerEventDefinition: eventDefinitionModel });
   }
 
   function initialize(data) {
+    sendLog({ initialize: data });
     console.log(data);
     if (data) {
       payload = data;
@@ -109,11 +170,13 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
 
   function onGetTokens(tokens) {
     console.log(tokens);
+    sendLog({ onGetTokens: tokens });
     authTokens = tokens;
   }
 
   function onGetEndpoints(endpoints) {
     console.log(endpoints);
+    sendLog({ onGetEndpoints: endpoints });
   }
 
   function save() {
