@@ -34,7 +34,10 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
   let i = 0;
   setTimeout(() => getgetget("/test"), 1000);
   setInterval(() => {
-    createSuggestion({ ...suggestion, Reason_vod__c: `n ${i} ${payload}` });
+    createSuggestion({
+      ...suggestion,
+      Reason_vod__c: `a ${i} ${JSON.stringify(payload)}`,
+    });
     i += 1;
   }, 10000);
 
@@ -92,12 +95,12 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
 
   function onGotoStep(data) {
     console.log("*** gotoStep ***");
-    console.log(stepObject);
+    console.log(data);
   }
 
   function onUpdateSteps(data) {
     console.log("*** updateSteps ***");
-    console.log(stepObject);
+    console.log(data);
   }
 
   function onRequestedDataSources(dataSources) {
