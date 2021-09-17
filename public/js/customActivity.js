@@ -32,13 +32,13 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
     Priority_vod__c: "Urgent_vod",
   };
 
-  createSuggestion({ ...suggestion, Reason_vod__c: "3test" });
+  createSuggestion({ ...suggestion, Reason_vod__c: "4test" });
 
   setTimeout(() => getgetget("/test"), 1000);
 
   setTimeout(() => {
-    createSuggestion({ ...suggestion, Reason_vod__c: "3test" });
-  }, 30000);
+    createSuggestion({ ...suggestion, Reason_vod__c: "4test" });
+  }, 60000);
 
   connection.on("initActivity", initialize);
   connection.on("requestedTokens", onGetTokens);
@@ -76,14 +76,14 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
     console.log("*** requestedTriggerEventDefinition ***");
     createSuggestion({
       ...suggestion,
-      Reason_vod__c: "3requestedTriggerEventDefinition",
+      Reason_vod__c: "4requestedTriggerEventDefinition",
     });
     console.log(data);
   }
 
   function onRequestedInteraction(data) {
     console.log("*** requestedInteraction ***");
-    createSuggestion({ ...suggestion, Reason_vod__c: "3requestedInteraction" });
+    createSuggestion({ ...suggestion, Reason_vod__c: "4requestedInteraction" });
     console.log(data);
   }
 
@@ -91,38 +91,38 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
     console.log("*** requestedInteractionDefaults ***");
     createSuggestion({
       ...suggestion,
-      Reason_vod__c: "3requestedInteractionDefaults",
+      Reason_vod__c: "4requestedInteractionDefaults",
     });
     console.log(data);
   }
 
   function onRequestedCulture(data) {
     console.log("*** onRequestedCulture ***");
-    createSuggestion({ ...suggestion, Reason_vod__c: "3onRequestedCulture" });
+    createSuggestion({ ...suggestion, Reason_vod__c: "4onRequestedCulture" });
     console.log(data);
   }
 
   function onGotoStep(data) {
     console.log("*** gotoStep ***");
-    createSuggestion({ ...suggestion, Reason_vod__c: "3gotoStep" });
+    createSuggestion({ ...suggestion, Reason_vod__c: "4gotoStep" });
     console.log(data);
   }
 
   function onUpdateSteps(data) {
     console.log("*** updateSteps ***");
-    createSuggestion({ ...suggestion, Reason_vod__c: "3updateSteps" });
+    createSuggestion({ ...suggestion, Reason_vod__c: "4updateSteps" });
     console.log(data);
   }
 
   function onRequestedDataSources(dataSources) {
     console.log("*** requestedDataSources ***");
-    createSuggestion({ ...suggestion, Reason_vod__c: "3requestedDataSources" });
+    createSuggestion({ ...suggestion, Reason_vod__c: "4requestedDataSources" });
     console.log(dataSources);
   }
 
   function onRequestedInteraction(interaction) {
     console.log("*** requestedInteraction ***");
-    createSuggestion({ ...suggestion, Reason_vod__c: "3requestedInteraction" });
+    createSuggestion({ ...suggestion, Reason_vod__c: "4requestedInteraction" });
     console.log(interaction);
   }
 
@@ -130,14 +130,14 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
     console.log("*** requestedTriggerEventDefinition ***");
     createSuggestion({
       ...suggestion,
-      Reason_vod__c: "3requestedTriggerEventDefinition",
+      Reason_vod__c: "4requestedTriggerEventDefinition",
     });
     console.log(eventDefinitionModel);
   }
 
   function initialize(data) {
     console.log(data);
-    createSuggestion({ ...suggestion, Reason_vod__c: "3initialize" });
+    createSuggestion({ ...suggestion, Reason_vod__c: "4initialize" });
     if (data) {
       payload = data;
     }
@@ -167,13 +167,13 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
   }
 
   function onGetTokens(tokens) {
-    createSuggestion({ ...suggestion, Reason_vod__c: "3onGetTokens" });
+    createSuggestion({ ...suggestion, Reason_vod__c: "4onGetTokens" });
     console.log(tokens);
     authTokens = tokens;
   }
 
   function onGetEndpoints(endpoints) {
-    createSuggestion({ ...suggestion, Reason_vod__c: "3onGetEndpoints" });
+    createSuggestion({ ...suggestion, Reason_vod__c: "4onGetEndpoints" });
     console.log(endpoints);
   }
 
