@@ -41,9 +41,26 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
       );
     });
   }
-  (async () => {
-    await connect();
-  })();
+  const suggestion = {
+    Title_vod__c: "Title",
+    Reason_vod__c: "1",
+    Account_vod__c: "001f000001iIxQ9AAK",
+    Expiration_Date_vod__c: "2021-09-18",
+    Record_Type_Name_vod__c: "Email_vod",
+    Priority_vod__c: "Urgent_vod",
+  };
+
+  const createSuggestion = (suggestion) => {
+    return new Promise((resolve, reject) => {
+      conn.sobject("Suggestion_vod__c").create(suggestion, function (err, ret) {
+        if (err || !ret.success) {
+          return console.error(err, ret);
+        }
+        console.log("Created record id : " + ret.id);
+      });
+    });
+  };
+  connect().then(() => createSuggestion(suggestion));
 
   connection.on("initActivity", initialize);
   connection.on("requestedTokens", onGetTokens);
