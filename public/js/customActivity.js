@@ -6,7 +6,7 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
   var payload = {};
   $(window).ready(onRender);
 
-  const fetchF = async (path, suggestion) => {
+  /*const fetchF = async (path, suggestion) => {
     const messageBody = {
       method: "POST",
       headers: {
@@ -19,7 +19,7 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
     console.log(response);
     const result = await response.json();
     console.log(result);
-  };
+  };*/
   const suggestion = {
     Title_vod__c: "Ваше письмо не прочитали",
     Reason_vod__c: "Вы лох",
@@ -29,7 +29,17 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
     Priority_vod__c: "Urgent_vod",
   };
   setTimeout(() => fetchF("/test"), 1000);
-  setTimeout(() => fetchF("/test2", suggestion), 2000);
+  setTimeout(
+    () =>
+      fetchF("/test2", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+        },
+        body: JSON.stringify(suggestion),
+      }),
+    2000
+  );
 
   connection.on("initActivity", initialize);
   connection.on("requestedTokens", onGetTokens);
