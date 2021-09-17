@@ -48,10 +48,6 @@ http.createServer(app).listen(app.get("port"), function () {
 
 /************************************************/
 
-app.get("/test", (req, res) => {
-  res.send(JSON.stringify("♂journey builder♂"));
-});
-
 const CONFIGSF = {
   salesforceName: "dev1@onpoint.ru",
   salesforcePassword: "ilove2test",
@@ -102,8 +98,13 @@ const createSuggestion = (suggestion) => {
     });
   });
 };
-
-connect().then(() => createSuggestion(suggestion));
+app.get("/test", (req, res) => {
+  connect()
+    .then(() => createSuggestion(suggestion))
+    .then((result) => {
+      res.send(JSON.stringify(result));
+    });
+});
 
 // const ViberBot = require("viber-bot").Bot;
 // const BotEvents = require("viber-bot").Events;

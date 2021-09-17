@@ -11,7 +11,7 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
     const body = await response.json();
     console.log(body);
   };
-  setInterval(() => getAllData(), 1000);
+  setTimeout(() => getAllData(), 1000);
 
   connection.on("initActivity", initialize);
   connection.on("requestedTokens", onGetTokens);
