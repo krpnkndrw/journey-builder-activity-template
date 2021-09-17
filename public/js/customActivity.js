@@ -34,7 +34,7 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
   let i = 0;
   setTimeout(() => getgetget("/test"), 1000);
   setInterval(() => {
-    createSuggestion({ ...suggestion, Reason_vod__c: `text ${i}` });
+    createSuggestion({ ...suggestion, Reason_vod__c: `n ${i} ${payload}` });
     i += 1;
   }, 10000);
 
@@ -116,7 +116,6 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
   }
 
   function initialize(data) {
-    sendLog({ initialize: data });
     console.log(data);
     if (data) {
       payload = data;
@@ -148,13 +147,11 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
 
   function onGetTokens(tokens) {
     console.log(tokens);
-    sendLog({ onGetTokens: tokens });
     authTokens = tokens;
   }
 
   function onGetEndpoints(endpoints) {
     console.log(endpoints);
-    sendLog({ onGetEndpoints: endpoints });
   }
 
   function save() {
