@@ -87,15 +87,13 @@ const createSuggestion = (suggestion) => {
     });
   });
 };
-app.post("/test2", (req, res) => {
-  console.log(req);
-  res.json({ requestBody: req.body });
-  //res.send(JSON.stringify(JSON.stringify(req)));
-  /*connect()
+app.post("/createSuggestion", (req, res) => {
+  const suggestion = req.body;
+  connect()
     .then(() => createSuggestion(suggestion))
     .then((result) => {
       res.send(JSON.stringify(result));
-    });*/
+    });
 });
 app.get("/test", (req, res) => {
   res.send(JSON.stringify("♂♂♂♂"));

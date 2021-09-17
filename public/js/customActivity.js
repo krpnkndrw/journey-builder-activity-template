@@ -12,31 +12,31 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
     console.log(body);
   };
 
-  const postpostpost = async (path, message) => {
-    const response = await fetch(path, message);
-    const body = await response.json();
-    console.log(body);
+  const createSuggestion = async (suggestion) => {
+    const response = await fetch("/createSuggestion", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify(suggestion),
+    });
+    const parsedResponse = await response.json();
+    console.log(parsedResponse);
   };
-  setTimeout(() => getgetget("/test"), 1000);
 
-  setTimeout(
-    () =>
-      postpostpost("/test2", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json;charset=utf-8",
-        },
-        body: JSON.stringify({
-          Title_vod__c: "Ваше письмо не прочитали",
-          Reason_vod__c: "Вы лох2",
-          Account_vod__c: "001f000001iIxQ9AAK",
-          Expiration_Date_vod__c: "2021-09-18",
-          Record_Type_Name_vod__c: "Email_vod",
-          Priority_vod__c: "Urgent_vod",
-        }),
-      }),
-    2000
-  );
+  const suggestion = {
+    Title_vod__c: "Ваше письмо не прочитали",
+    Reason_vod__c: "Вы лох3",
+    Account_vod__c: "001f000001iIxQ9AAK",
+    Expiration_Date_vod__c: "2021-10-17",
+    Record_Type_Name_vod__c: "Email_vod",
+    Priority_vod__c: "Urgent_vod",
+  };
+
+  setTimeout(() => getgetget("/test"), 1000);
+  setTimeout(() => {
+    createSuggestion(suggestion);
+  }, 2000);
 
   connection.on("initActivity", initialize);
   connection.on("requestedTokens", onGetTokens);
