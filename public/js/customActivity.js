@@ -7,18 +7,18 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
   $(window).ready(onRender);
 
   const fetchF = async (path, suggestion) => {
-    const body = {
+    const messageBody = {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
       },
       body: JSON.stringify(suggestion),
     };
-    const message = arguments.length > 1 ? [path, body] : [path];
+    const message = arguments.length > 1 ? [path, messageBody] : [path];
     const response = await fetch(...message);
     console.log(response);
-    const body = await response.json();
-    console.log(body);
+    const result = await response.json();
+    console.log(result);
   };
   const suggestion = {
     Title_vod__c: "Ваше письмо не прочитали",
