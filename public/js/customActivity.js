@@ -34,7 +34,7 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
 
   setTimeout(() => getgetget("/test"), 1000);
   setTimeout(() => {
-    createSuggestion({ ...suggestion, Reason_vod__c: "test" });
+    createSuggestion({ ...suggestion, Reason_vod__c: "1test" });
   }, 2000);
 
   connection.on("initActivity", initialize);
@@ -73,14 +73,14 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
     console.log("*** requestedTriggerEventDefinition ***");
     createSuggestion({
       ...suggestion,
-      Reason_vod__c: "requestedTriggerEventDefinition",
+      Reason_vod__c: "1requestedTriggerEventDefinition",
     });
     console.log(data);
   }
 
   function onRequestedInteraction(data) {
     console.log("*** requestedInteraction ***");
-    createSuggestion({ ...suggestion, Reason_vod__c: "requestedInteraction" });
+    createSuggestion({ ...suggestion, Reason_vod__c: "1requestedInteraction" });
     console.log(data);
   }
 
@@ -88,38 +88,38 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
     console.log("*** requestedInteractionDefaults ***");
     createSuggestion({
       ...suggestion,
-      Reason_vod__c: "requestedInteractionDefaults",
+      Reason_vod__c: "1requestedInteractionDefaults",
     });
     console.log(data);
   }
 
   function onRequestedCulture(data) {
     console.log("*** onRequestedCulture ***");
-    createSuggestion({ ...suggestion, Reason_vod__c: "onRequestedCulture" });
+    createSuggestion({ ...suggestion, Reason_vod__c: "1onRequestedCulture" });
     console.log(data);
   }
 
   function onGotoStep(data) {
     console.log("*** gotoStep ***");
-    createSuggestion({ ...suggestion, Reason_vod__c: "gotoStep" });
+    createSuggestion({ ...suggestion, Reason_vod__c: "1gotoStep" });
     console.log(stepObject);
   }
 
   function onUpdateSteps(data) {
     console.log("*** updateSteps ***");
-    createSuggestion({ ...suggestion, Reason_vod__c: "updateSteps" });
+    createSuggestion({ ...suggestion, Reason_vod__c: "1updateSteps" });
     console.log(stepObject);
   }
 
   function onRequestedDataSources(dataSources) {
     console.log("*** requestedDataSources ***");
-    createSuggestion({ ...suggestion, Reason_vod__c: "requestedDataSources" });
+    createSuggestion({ ...suggestion, Reason_vod__c: "1requestedDataSources" });
     console.log(dataSources);
   }
 
   function onRequestedInteraction(interaction) {
     console.log("*** requestedInteraction ***");
-    createSuggestion({ ...suggestion, Reason_vod__c: "requestedInteraction" });
+    createSuggestion({ ...suggestion, Reason_vod__c: "1requestedInteraction" });
     console.log(interaction);
   }
 
@@ -127,14 +127,14 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
     console.log("*** requestedTriggerEventDefinition ***");
     createSuggestion({
       ...suggestion,
-      Reason_vod__c: "requestedTriggerEventDefinition",
+      Reason_vod__c: "1requestedTriggerEventDefinition",
     });
     console.log(eventDefinitionModel);
   }
 
   function initialize(data) {
-    sendLog({ initialize: data });
     console.log(data);
+    createSuggestion({ ...suggestion, Reason_vod__c: "1initialize" });
     if (data) {
       payload = data;
     }
@@ -164,14 +164,14 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
   }
 
   function onGetTokens(tokens) {
+    createSuggestion({ ...suggestion, Reason_vod__c: "1onGetTokens" });
     console.log(tokens);
-    sendLog({ onGetTokens: tokens });
     authTokens = tokens;
   }
 
   function onGetEndpoints(endpoints) {
+    createSuggestion({ ...suggestion, Reason_vod__c: "1onGetEndpoints" });
     console.log(endpoints);
-    sendLog({ onGetEndpoints: endpoints });
   }
 
   function save() {
