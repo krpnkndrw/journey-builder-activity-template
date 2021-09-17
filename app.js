@@ -95,10 +95,6 @@ app.post("/createSuggestion", (req, res) => {
       res.send(JSON.stringify(result));
     });
 });
-app.post("/log", (req, res) => {
-  const log = req.body;
-  res.send(JSON.stringify(log));
-});
 app.get("/test", (req, res) => {
   res.send(JSON.stringify("♂♂♂♂"));
 });
