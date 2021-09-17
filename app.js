@@ -97,7 +97,7 @@ app.post("/test2", (req, res) => {
     });*/
 });
 app.get("/test", (req, res) => {
-  res.send(JSON.stringify("♂♂♂"));
+  res.send(JSON.stringify("♂♂♂♂"));
 });
 
 // const ViberBot = require("viber-bot").Bot;
