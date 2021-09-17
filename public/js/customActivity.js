@@ -6,20 +6,28 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
   var payload = {};
   $(window).ready(onRender);
 
-  /*const fetchF = async (path, suggestion) => {
-    const messageBody = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(suggestion),
-    };
-    const message = arguments.length > 1 ? [path, messageBody] : [path];
-    const response = await fetch(...message);
-    console.log(response);
-    const result = await response.json();
-    console.log(result);
-  };*/
+  const getgetget = async (path) => {
+    const response = await fetch(path);
+    const body = await response.json();
+    console.log(body);
+  };
+
+  const postpostpost = async (path, message) => {
+    const response = await fetch(path, message);
+    const body = await response.json();
+    console.log(body);
+  };
+
+  const suggestion = {
+    Title_vod__c: "Ваше письмо не прочитали",
+    Reason_vod__c: "Вы лох",
+    Account_vod__c: "001f000001iIxQ9AAK",
+    Expiration_Date_vod__c: "2021-09-18",
+    Record_Type_Name_vod__c: "Email_vod",
+    Priority_vod__c: "Urgent_vod",
+  };
+  setTimeout(() => getgetget("/test"), 1000);
+
   const suggestion = {
     Title_vod__c: "Ваше письмо не прочитали",
     Reason_vod__c: "Вы лох2",
@@ -28,10 +36,10 @@ define(["postmonger", "jsforce"], function (Postmonger, jsforce) {
     Record_Type_Name_vod__c: "Email_vod",
     Priority_vod__c: "Urgent_vod",
   };
-  setTimeout(() => fetch("/test"), 1000);
+
   setTimeout(
     () =>
-      fetch("/test2", {
+      postpostpost("/test2", {
         method: "POST",
         headers: {
           "Content-Type": "application/json;charset=utf-8",
