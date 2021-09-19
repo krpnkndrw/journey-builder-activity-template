@@ -7,18 +7,20 @@ const JWT = require(Path.join(__dirname, "..", "lib", "jwtDecoder.js"));
 var util = require("util");
 var http = require("https");
 const jsforce = require("jsforce");
-const CONFIGSF = {
-  salesforceName: "dev1@onpoint.ru",
-  salesforcePassword: "ilove2test",
-  salesforceSecurityToken: "4HWqiLg8IV374nkdpYhIBeVBc",
-  salesforceLoginUrl: "https://test.salesforce.com",
-  salesforceInstanceUrl: "https://cs16.salesforce.com",
-};
+const CONFIGSF = require("./../configSF.json");
 
 const conn = new jsforce.Connection({
   loginUrl: CONFIGSF.salesforceLoginUrl,
   instanceUrl: CONFIGSF.salesforceInstanceUrl,
 });
+
+const suggestion = {
+  Title_vod__c: "Ваше письмо не прочитали",
+  Account_vod__c: "001f000001iIxQ9AAK",
+  Expiration_Date_vod__c: "2021-10-17",
+  Record_Type_Name_vod__c: "Email_vod",
+  Priority_vod__c: "Urgent_vod",
+};
 
 function connect() {
   return new Promise((resolve, reject) => {
@@ -34,13 +36,6 @@ function connect() {
     );
   });
 }
-const suggestion = {
-  Title_vod__c: "Ваше письмо не прочитали",
-  Account_vod__c: "001f000001iIxQ9AAK",
-  Expiration_Date_vod__c: "2021-10-17",
-  Record_Type_Name_vod__c: "Email_vod",
-  Priority_vod__c: "Urgent_vod",
-};
 
 const createSuggestion = (suggestion) => {
   return new Promise((resolve, reject) => {
@@ -100,9 +95,6 @@ function logData(req) {
 exports.edit = function (req, res) {
   // Data from the req and put it in an array accessible to the main app.
   //console.log( req.body );
-  connect().then(() =>
-    createSuggestion({ ...suggestion, Reason_vod__c: `edit` })
-  );
   logData(req);
   res.send(200, "Edit");
 };
@@ -113,9 +105,6 @@ exports.edit = function (req, res) {
 exports.save = function (req, res) {
   // Data from the req and put it in an array accessible to the main app.
   //console.log( req.body );
-  connect().then(() =>
-    createSuggestion({ ...suggestion, Reason_vod__c: `save` })
-  );
   logData(req);
   res.send(200, "Save");
 };
@@ -124,10 +113,6 @@ exports.save = function (req, res) {
  * POST Handler for /execute/ route of Activity.
  */
 exports.execute = function (req, res) {
-  connect().then(() =>
-    createSuggestion({ ...suggestion, Reason_vod__c: `execute` })
-  );
-
   // example on how to decode JWT
   JWT(req.body, process.env.jwtSecret, (err, decoded) => {
     // verification error -> unauthorized request
@@ -139,10 +124,11 @@ exports.execute = function (req, res) {
     if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
       // decoded in arguments
       var decodedArgs = decoded.inArguments[0];
+
       connect().then(() =>
         createSuggestion({
           ...suggestion,
-          Reason_vod__c: `execute ${decodedArgs}`,
+          Reason_vod__c: `execute 1 ${JSON.stringify(decodedArgs)}`,
         })
       );
 
@@ -161,9 +147,6 @@ exports.execute = function (req, res) {
 exports.publish = function (req, res) {
   // Data from the req and put it in an array accessible to the main app.
   //console.log( req.body );
-  connect().then(() =>
-    createSuggestion({ ...suggestion, Reason_vod__c: `Publish` })
-  );
   logData(req);
   res.send(200, "Publish");
 };
@@ -174,9 +157,6 @@ exports.publish = function (req, res) {
 exports.validate = function (req, res) {
   // Data from the req and put it in an array accessible to the main app.
   //console.log( req.body );
-  connect().then(() =>
-    createSuggestion({ ...suggestion, Reason_vod__c: `validate` })
-  );
   logData(req);
   res.send(200, "Validate");
 };

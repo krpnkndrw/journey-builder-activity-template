@@ -11,6 +11,7 @@ var request = require("request");
 var routes = require("./routes");
 var activity = require("./routes/activity");
 const jsforce = require("jsforce");
+const CONFIGSF = require("./configSF.json");
 // const ViberBot = require("viber-bot").Bot;
 // const BotEvents = require("viber-bot").Events;
 
@@ -48,14 +49,6 @@ http.createServer(app).listen(app.get("port"), function () {
 });
 
 /************************************************/
-
-const CONFIGSF = {
-  salesforceName: "dev1@onpoint.ru",
-  salesforcePassword: "ilove2test",
-  salesforceSecurityToken: "4HWqiLg8IV374nkdpYhIBeVBc",
-  salesforceLoginUrl: "https://test.salesforce.com",
-  salesforceInstanceUrl: "https://cs16.salesforce.com",
-};
 
 const conn = new jsforce.Connection({
   loginUrl: CONFIGSF.salesforceLoginUrl,
