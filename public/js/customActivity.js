@@ -33,13 +33,13 @@ define(["postmonger"], function (Postmonger) {
   };
   let i = 0;
   setTimeout(() => getgetget("/test"), 1000);
-  setInterval(() => {
+  /*setInterval(() => {
     createSuggestion({
       ...suggestion,
       Reason_vod__c: `a ${i} ${JSON.stringify(payload)}`,
     });
     i += 1;
-  }, 10000);
+  }, 10000);*/
 
   connection.on("initActivity", initialize);
   connection.on("requestedTokens", onGetTokens);
