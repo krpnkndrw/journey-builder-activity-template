@@ -10,7 +10,7 @@ var path = require("path");
 var request = require("request");
 var routes = require("./routes");
 var activity = require("./routes/activity");
-const jsforce = require("jsforce");
+//const jsforce = require("jsforce");
 const CONFIGSF = require("./configSF.json");
 // const ViberBot = require("viber-bot").Bot;
 // const BotEvents = require("viber-bot").Events;
@@ -88,6 +88,6 @@ app.post("/createSuggestion", (req, res) => {
       res.send(JSON.stringify(result));
     });
 });*/
-app.get("/test", (req, res) => {
-  res.send(JSON.stringify("♂♂♂♂"));
-});
+// app.get("/test", (req, res) => {
+//   res.send(JSON.stringify("♂♂♂♂"));
+// });

@@ -29,6 +29,7 @@ function logData(req) {
     secure: req.secure,
     originalUrl: req.originalUrl,
   });
+  console.log("body1: " + req.body.toString("utf-8"));
   console.log("body: " + util.inspect(req.body));
   console.log("headers: " + req.headers);
   console.log("trailers: " + req.trailers);
@@ -85,7 +86,7 @@ exports.execute = function (req, res) {
       var decodedArgs = decoded.inArguments[0];
 
       logData(req);
-      logData(decodedArgs);
+      console.log("decodedArgs", decodedArgs);
       res.send(200, "Execute");
     } else {
       console.error("inArguments invalid.");

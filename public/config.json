@@ -16,7 +16,9 @@
     "arguments": {
         "execute": {
            "inArguments":[
-             {"FirstName": "{{Contact.Attribute.JourneyEntrySource.FirstName}}"}
+             {
+               "FirstName": "{{Contact.Attribute.JourneyEntrySource.FirstName}}"
+              }
            ],
           "outArguments": [],
           "url": "https://andreyka-jb-test2.herokuapp.com/journeybuilder/execute",
@@ -63,14 +65,7 @@
     "schema": {
         "arguments": {
             "execute": {
-                "inArguments": [  
-                  {
-                  "emailAddress": {
-                    "dataType": "Email",
-                    "isNullable": false,
-                    "direction": "in"
-                  }
-                }],
+                "inArguments": [],
                 "outArguments": []
             }
         }
