@@ -70,7 +70,7 @@ function connect() {
   });
 }
 
-const createSuggestion = (suggestion) => {
+/*const createSuggestion = (suggestion) => {
   return new Promise((resolve, reject) => {
     conn.sobject("Suggestion_vod__c").create(suggestion, function (err, res) {
       if (err || !res.success) {
@@ -87,7 +87,7 @@ app.post("/createSuggestion", (req, res) => {
     .then((result) => {
       res.send(JSON.stringify(result));
     });
-});
+});*/
 app.get("/test", (req, res) => {
   res.send(JSON.stringify("♂♂♂♂"));
 });

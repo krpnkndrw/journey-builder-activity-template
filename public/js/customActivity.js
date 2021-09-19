@@ -12,7 +12,7 @@ define(["postmonger"], function (Postmonger) {
     console.log(body);
   };
 
-  const createSuggestion = async (suggestion) => {
+  /*const createSuggestion = async (suggestion) => {
     const response = await fetch("/createSuggestion", {
       method: "POST",
       headers: {
@@ -22,17 +22,17 @@ define(["postmonger"], function (Postmonger) {
     });
     const parsedResponse = await response.json();
     console.log(parsedResponse);
-  };
+  };*/
 
-  const suggestion = {
+  /*const suggestion = {
     Title_vod__c: "Ваше письмо не прочитали",
     Account_vod__c: "001f000001iIxQ9AAK",
     Expiration_Date_vod__c: "2021-10-17",
     Record_Type_Name_vod__c: "Email_vod",
     Priority_vod__c: "Urgent_vod",
-  };
-  let i = 0;
-  setTimeout(() => getgetget("/test"), 1000);
+  };*/
+  //let i = 0;
+  //setTimeout(() => getgetget("/test"), 1000);
   /*setInterval(() => {
     createSuggestion({
       ...suggestion,
