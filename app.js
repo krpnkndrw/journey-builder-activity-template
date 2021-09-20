@@ -50,25 +50,25 @@ http.createServer(app).listen(app.get("port"), function () {
 
 /************************************************/
 
-const conn = new jsforce.Connection({
-  loginUrl: CONFIGSF.salesforceLoginUrl,
-  instanceUrl: CONFIGSF.salesforceInstanceUrl,
-});
+// const conn = new jsforce.Connection({
+//   loginUrl: CONFIGSF.salesforceLoginUrl,
+//   instanceUrl: CONFIGSF.salesforceInstanceUrl,
+// });
 
-function connect() {
-  return new Promise((resolve, reject) => {
-    conn.login(
-      CONFIGSF.salesforceName,
-      CONFIGSF.salesforcePassword + CONFIGSF.salesforceSecurityToken,
-      function (err, res) {
-        if (err) {
-          reject(err);
-        }
-        resolve(res);
-      }
-    );
-  });
-}
+// function connect() {
+//   return new Promise((resolve, reject) => {
+//     conn.login(
+//       CONFIGSF.salesforceName,
+//       CONFIGSF.salesforcePassword + CONFIGSF.salesforceSecurityToken,
+//       function (err, res) {
+//         if (err) {
+//           reject(err);
+//         }
+//         resolve(res);
+//       }
+//     );
+//   });
+// }
 
 /*const createSuggestion = (suggestion) => {
   return new Promise((resolve, reject) => {
