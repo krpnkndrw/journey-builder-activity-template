@@ -15,13 +15,18 @@
     },
     "arguments": {
         "execute": {
-           "inArguments":[
-             {
-               "FirstName": "{{Contact.Attribute.JourneyEntrySource.FirstName}}"
+           "inArguments":[             
+              {
+                "emailAddress": "{{InteractionDefaults.Email}}"
+              },
+              {
+                "FirstName": "{{Contact.Attribute.JourneyEntrySource.FirstName}}"
               }
            ],
           "outArguments": [],
-          "url": "https://andreyka-jb-test-3.herokuapp.com/journeybuilder/execute",
+          "url": "https://andreyka-jb-test-3.herokuapp.com/journeybuilder/execute",          
+          "timeout": 10000,
+          "retryCount": 3,
            "verb": "POST",
             "body": "",
             "header": "",
