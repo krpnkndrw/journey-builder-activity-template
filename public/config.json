@@ -15,10 +15,7 @@
     },
     "arguments": {
         "execute": {
-           "inArguments":[             
-              {
-                "emailAddress": "{{InteractionDefaults.Email}}"
-              },
+           "inArguments":[  
               {
                 "FirstName": "{{Contact.Attribute.JourneyEntrySource.FirstName}}"
               }

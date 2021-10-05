@@ -84,7 +84,7 @@ const suggestion = {
   Expiration_Date_vod__c: "2021-06-17",
   Record_Type_Name_vod__c: "Email_vod",
   Priority_vod__c: "Urgent_vod",
-  Reason_vod__c: `test 3`,
+  Reason_vod__c: `test 4`,
 };
 function connect() {
   return new Promise((resolve, reject) => {
@@ -129,7 +129,7 @@ exports.execute = function (req, res) {
             
             logData(req);
             console.log(JSON.stringify(decoded))
-            console.log(decodedArgs.body.toString())
+            console.log(req.body.toString())
             connect()
               .then(() => createSuggestion(suggestion))
               .then(() => console.log("suggestionCreated"));
