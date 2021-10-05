@@ -75,7 +75,6 @@ exports.execute = function (req, res) {
 
     // example on how to decode JWT
     JWT(req.body, process.env.jwtSecret, (err, decoded) => {
-<<<<<<< HEAD
 
         // verification error -> unauthorized request
         if (err) {
@@ -83,15 +82,6 @@ exports.execute = function (req, res) {
             return res.status(401).end();
         }
 
-=======
-
-        // verification error -> unauthorized request
-        if (err) {
-            console.error(err);
-            return res.status(401).end();
-        }
-
->>>>>>> b0258eabd6ed74ce9f6f2c2fb873270d45bc855d
         if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
             
             // decoded in arguments
