@@ -67,7 +67,15 @@
     "schema": {
         "arguments": {
             "execute": {
-                "inArguments": [],
+                "inArguments": [
+                  {
+                  "emailAddress": "{{InteractionDefaults.Email}}"
+                },
+                  {
+                    "FirstName": "{{Contact.Attribute.JourneyEntrySource.FirstName}}"
+                  }
+                  
+                ],
                 "outArguments": []
             }
         }
