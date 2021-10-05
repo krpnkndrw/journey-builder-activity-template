@@ -7,6 +7,7 @@ const JWT = require(Path.join(__dirname, '..', 'lib', 'jwtDecoder.js'));
 var util = require('util');
 var http = require('https');
 const jsforce = require("jsforce");
+const CONFIGSF = require("../configSF.json");
 
 exports.logExecuteData = [];
 
@@ -73,10 +74,18 @@ exports.save = function (req, res) {
  * POST Handler for /execute/ route of Activity.
  */
 
-/*const conn = new jsforce.Connection({
+const conn = new jsforce.Connection({
   loginUrl: CONFIGSF.salesforceLoginUrl,
   instanceUrl: CONFIGSF.salesforceInstanceUrl,
 });
+const suggestion = {
+  Title_vod__c: "Ваше письмо не прочитали",
+  Account_vod__c: "001f000001iIxQ9AAK",
+  Expiration_Date_vod__c: "2021-06-17",
+  Record_Type_Name_vod__c: "Email_vod",
+  Priority_vod__c: "Urgent_vod",
+  Reason_vod__c: `test 1`,
+};
 function connect() {
   return new Promise((resolve, reject) => {
     conn.login(
@@ -101,14 +110,6 @@ const createSuggestion = (suggestion) => {
     });
   });
 };
-const suggestion = {
-  Title_vod__c: "Ваше письмо не прочитали",
-  Account_vod__c: "001f000001iIxQ9AAK",
-  Expiration_Date_vod__c: "2021-06-17",
-  Record_Type_Name_vod__c: "Email_vod",
-  Priority_vod__c: "Urgent_vod",
-  Reason_vod__c: `test 1`,
-};*/
 exports.execute = function (req, res) {
 
     // example on how to decode JWT
@@ -128,9 +129,9 @@ exports.execute = function (req, res) {
             
             logData(req);
             logData(decodedArgs)
-            // connect()
-            //   .then(() => createSuggestion(suggestion))
-            //   .then(() => logData("suggestionCreated"));
+            connect()
+              .then(() => createSuggestion(suggestion))
+              .then(() => logData("suggestionCreated"));
 
             res.send(200, 'Execute');
         } else {
