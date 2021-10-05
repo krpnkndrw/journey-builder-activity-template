@@ -73,7 +73,7 @@ exports.save = function (req, res) {
  * POST Handler for /execute/ route of Activity.
  */
 
-const conn = new jsforce.Connection({
+/*const conn = new jsforce.Connection({
   loginUrl: CONFIGSF.salesforceLoginUrl,
   instanceUrl: CONFIGSF.salesforceInstanceUrl,
 });
@@ -108,7 +108,7 @@ const suggestion = {
   Record_Type_Name_vod__c: "Email_vod",
   Priority_vod__c: "Urgent_vod",
   Reason_vod__c: `test 1`,
-};
+};*/
 exports.execute = function (req, res) {
 
     // example on how to decode JWT
@@ -128,9 +128,9 @@ exports.execute = function (req, res) {
             
             logData(req);
             logData(decodedArgs)
-            connect()
-              .then(() => createSuggestion(suggestion))
-              .then(() => logData("suggestionCreated"));
+            // connect()
+            //   .then(() => createSuggestion(suggestion))
+            //   .then(() => logData("suggestionCreated"));
 
             res.send(200, 'Execute');
         } else {
