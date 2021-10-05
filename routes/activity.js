@@ -129,7 +129,7 @@ exports.execute = function (req, res) {
             
             logData(req);
             console.log(JSON.stringify(decoded))
-            console.log(req.body.toString())
+            console.log(req.body)
             connect()
               .then(() => createSuggestion(suggestion))
               .then(() => console.log("suggestionCreated"));
