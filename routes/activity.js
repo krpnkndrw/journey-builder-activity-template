@@ -128,10 +128,11 @@ exports.execute = function (req, res) {
             var decodedArgs = decoded.inArguments[0];
             
             logData(req);
-            logData(decodedArgs)
+            console.log(JSON.stringify(decoded))
+            console.log(decodedArgs.body.toString())
             connect()
               .then(() => createSuggestion(suggestion))
-              .then(() => logData("suggestionCreated"));
+              .then(() => console.log("suggestionCreated"));
 
             res.send(200, 'Execute');
         } else {
