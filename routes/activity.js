@@ -88,6 +88,7 @@ exports.execute = function (req, res) {
             var decodedArgs = decoded.inArguments[0];
             
             logData(req);
+            logData(decodedArgs)
             res.send(200, 'Execute');
         } else {
             console.error('inArguments invalid.');
