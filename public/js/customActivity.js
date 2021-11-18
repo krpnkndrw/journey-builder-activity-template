@@ -94,7 +94,7 @@ define([
       console.log(endpoints);
   }
 
-  const onAddInfo = (args) => {
+  function onAddInfo(args) {
     info.push(args)
   }
 
