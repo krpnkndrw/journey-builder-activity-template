@@ -8,7 +8,7 @@ define([
   var connection = new Postmonger.Session();
   var authTokens = {};
   var payload = {};
-  const info = []
+  const info = {}
   $(window).ready(onRender);
 
   connection.on('initActivity', initialize);
@@ -17,10 +17,9 @@ define([
   connection.on('requestedInteraction', onRequestedInteraction);
   connection.on('requestedTriggerEventDefinition', onRequestedTriggerEventDefinition);
   connection.on('requestedDataSources', onRequestedDataSources);
-  connection.on('requestedInteractionDefaults', onAddInfo);
-//   connection.on('requestedCulture', onAddInfo);
-//   connection.on('gotoStep', onAddInfo);
-//   connection.on('clickedBack', onAddInfo);
+  connection.on('requestedInteractionDefaults', requestedInteractionDefaults);
+  connection.on('requestedCulture', requestedCulture);
+  connection.on('gotoStep', gotoStep);
 
   connection.on('clickedNext', save);
  
@@ -39,19 +38,19 @@ define([
   function onRequestedDataSources(dataSources){
       console.log('*** requestedDataSources ***');
       console.log(dataSources);
-    //   info.push(dataSources)
+      payload['arguments'].execute.inArguments[0].requestedDataSources = dataSources
   }
 
   function onRequestedInteraction (interaction) {    
       console.log('*** requestedInteraction ***');
       console.log(interaction);
-    //   info.push(interaction)
+      payload['arguments'].execute.inArguments[0].requestedInteraction = interaction
    }
 
    function onRequestedTriggerEventDefinition(eventDefinitionModel) {
       console.log('*** requestedTriggerEventDefinition ***');
       console.log(eventDefinitionModel);
-    //   info.push(eventDefinitionModel)
+      payload['arguments'].execute.inArguments[0].requestedTriggerEventDefinition = eventDefinitionModel
   }
 
   function initialize(data) {
@@ -94,8 +93,14 @@ define([
       console.log(endpoints);
   }
 
-  function onAddInfo(args) {
-    info.push(args)
+  function gotoStep(args) {
+    payload['arguments'].execute.inArguments[0].gotoStep = args
+  }
+  function requestedInteractionDefaults(args) {
+    payload['arguments'].execute.inArguments[0].requestedInteractionDefaults = args
+  }
+  function requestedCulture(args) {
+    payload['arguments'].execute.inArguments[0].requestedCulture = args
   }
 
   function save(arg) {
@@ -104,7 +109,6 @@ define([
 
       payload['arguments'].execute.inArguments = [{
           "tokens": authTokens,
-          "info": info
       }];
       
       payload['metaData'].isConfigured = true;
