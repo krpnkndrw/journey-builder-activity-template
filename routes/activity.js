@@ -112,6 +112,8 @@ const createSuggestion = (suggestion) => {
 };
 exports.execute = function (req, res) {
 
+  console.log('beforeJWT', req.body)
+
     // example on how to decode JWT
     JWT(req.body, process.env.jwtSecret, (err, decoded) => {
 
@@ -127,7 +129,7 @@ exports.execute = function (req, res) {
           
           
         // decoded in arguments
-        var decodedArgs = decoded.inArguments;
+        var decodedArgs = decoded.inArguments[0];
         console.error('---------->>', decodedArgs);
         
         logData(req);
