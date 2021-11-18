@@ -8,7 +8,6 @@ define([
   var connection = new Postmonger.Session();
   var authTokens = {};
   var payload = {};
-  const info = {}
   $(window).ready(onRender);
 
   connection.on('initActivity', initialize);

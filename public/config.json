@@ -65,15 +65,26 @@
         }
     },
     "schema": {
-        "arguments": {
-            "execute": {
-                "inArguments": [
-                  {
-                    "emailAddress": "{{InteractionDefaults.Email}}"
-                  }                  
-                ],
-                "outArguments": []
+      "arguments": {
+        "execute": {
+          "inArguments": [
+            {
+              "name": {
+                "dataType": "FirstName",
+                "isNullable": false,
+                "direction": "in"
+              }
+            },
+            {
+              "email": {
+                "dataType": "Email",
+                "isNullable": false,
+                "direction": "in"
+              }
             }
+          ],
+          "outArguments": []
         }
+      }
     }
 }
