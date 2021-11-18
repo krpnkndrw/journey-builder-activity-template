@@ -106,9 +106,7 @@ define([
       var postcardURLValue = $('#postcard-url').val();
       var postcardTextValue = $('#postcard-text').val();
 
-      payload['arguments'].execute.inArguments = [{
-          "tokens": authTokens,
-      }];
+      payload['arguments'].execute.inArguments.push({"tokens": authTokens});
       
       payload['metaData'].isConfigured = true;
 
