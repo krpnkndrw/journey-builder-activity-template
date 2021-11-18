@@ -75,6 +75,7 @@ define([
           text: 'done',
           visible: true
       });
+      save()
   }
 
   function onGetTokens(tokens) {
@@ -90,9 +91,9 @@ define([
       var postcardURLValue = $('#postcard-url').val();
       var postcardTextValue = $('#postcard-text').val();
 
-    //   payload['arguments'].execute.inArguments = [{
-    //       "tokens": authTokens
-    //   }];
+      payload['arguments'].execute.inArguments = [{
+          "tokens": authTokens
+      }];
       
       payload['metaData'].isConfigured = true;
 
