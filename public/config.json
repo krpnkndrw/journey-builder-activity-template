@@ -72,7 +72,10 @@
                     "emailAddress": "{{InteractionDefaults.Email}}"
                   },
                   {
-                    "FirstName": "{{Contact.Attribute.JourneyEntrySource.FirstName}}"
+                    "Contact": "{{Contact}}"
+                  },
+                  {
+                    "InteractionDefaults": "{{InteractionDefaults}}"
                   }                  
                 ],
                 "outArguments": []
