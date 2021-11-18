@@ -18,13 +18,7 @@
            "inArguments":[
             {
               "emailAddress": "{{InteractionDefaults.Email}}"
-            },
-            {
-              "Contact": "{{Contact}}"
-            },
-            {
-              "InteractionDefaults": "{{InteractionDefaults}}"
-            }                  
+            }                
           ],
           "outArguments": [],
           "url": "https://andreyka-jb-test-3.herokuapp.com/journeybuilder/execute",          
@@ -76,12 +70,6 @@
                 "inArguments": [
                   {
                     "emailAddress": "{{InteractionDefaults.Email}}"
-                  },
-                  {
-                    "Contact": "{{Contact}}"
-                  },
-                  {
-                    "InteractionDefaults": "{{InteractionDefaults}}"
                   }                  
                 ],
                 "outArguments": []
