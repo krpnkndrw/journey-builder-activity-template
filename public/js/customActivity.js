@@ -90,9 +90,9 @@ define([
       var postcardURLValue = $('#postcard-url').val();
       var postcardTextValue = $('#postcard-text').val();
 
-      payload['arguments'].execute.inArguments = [{
+      payload['arguments'].execute.inArguments.push({
           "tokens": authTokens
-      }];
+      });
       
       payload['metaData'].isConfigured = true;
 
