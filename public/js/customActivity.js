@@ -8,6 +8,7 @@ define([
   var connection = new Postmonger.Session();
   var authTokens = {};
   var payload = {};
+  const info = []
   $(window).ready(onRender);
 
   connection.on('initActivity', initialize);
@@ -64,9 +65,9 @@ define([
       console.log(inArguments);
 
       $.each(inArguments, function (index, inArgument) {
+        info.push(inArgument)
           $.each(inArgument, function (key, val) {
               console.log(key, val)
-            
           });
       });
 
@@ -91,7 +92,8 @@ define([
       var postcardTextValue = $('#postcard-text').val();
 
       payload['arguments'].execute.inArguments = [{
-          "tokens": authTokens
+          "tokens": authTokens,
+          "info":info
       }];
       
       payload['metaData'].isConfigured = true;
