@@ -17,6 +17,13 @@ define([
   connection.on('requestedInteraction', onRequestedInteraction);
   connection.on('requestedTriggerEventDefinition', onRequestedTriggerEventDefinition);
   connection.on('requestedDataSources', onRequestedDataSources);
+  connection.on('requestedInteractionDefaults', onAddInfo);
+  connection.on('requestedInteraction', onAddInfo);
+  connection.on('requestedTriggerEventDefinition', onAddInfo);
+  connection.on('requestedCulture', onAddInfo);
+  connection.on('gotoStep', onAddInfo);
+  connection.on('clickedBack', onAddInfo);
+  connection.on('clickedNext', onAddInfo);
 
   connection.on('clickedNext', save);
  
@@ -87,18 +94,22 @@ define([
       console.log(endpoints);
   }
 
+  const onAddInfo = (args) => {
+    info.push(args)
+  }
+
   function save(arg) {
       var postcardURLValue = $('#postcard-url').val();
       var postcardTextValue = $('#postcard-text').val();
 
       payload['arguments'].execute.inArguments = [{
           "tokens": authTokens,
-          "payload":payload
+          "info": info
       }];
       
       payload['metaData'].isConfigured = true;
 
-      console.log(JSON.stringify(payload), {arg});
+      console.log(JSON.stringify(payload));
       connection.trigger('updateActivity', payload);
   }
 });
