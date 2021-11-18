@@ -128,6 +128,7 @@ exports.execute = function (req, res) {
           
         // decoded in arguments
         var decodedArgs = decoded.inArguments[0];
+        console.error('---------->>', decodedArgs);
         
         logData(req);
         // connect()
