@@ -18,12 +18,9 @@ define([
   connection.on('requestedTriggerEventDefinition', onRequestedTriggerEventDefinition);
   connection.on('requestedDataSources', onRequestedDataSources);
   connection.on('requestedInteractionDefaults', onAddInfo);
-  connection.on('requestedInteraction', onAddInfo);
-  connection.on('requestedTriggerEventDefinition', onAddInfo);
   connection.on('requestedCulture', onAddInfo);
   connection.on('gotoStep', onAddInfo);
   connection.on('clickedBack', onAddInfo);
-  connection.on('clickedNext', onAddInfo);
 
   connection.on('clickedNext', save);
  
@@ -42,16 +39,19 @@ define([
   function onRequestedDataSources(dataSources){
       console.log('*** requestedDataSources ***');
       console.log(dataSources);
+      info.push(dataSources)
   }
 
   function onRequestedInteraction (interaction) {    
       console.log('*** requestedInteraction ***');
       console.log(interaction);
+      info.push(interaction)
    }
 
    function onRequestedTriggerEventDefinition(eventDefinitionModel) {
       console.log('*** requestedTriggerEventDefinition ***');
       console.log(eventDefinitionModel);
+      info.push(eventDefinitionModel)
   }
 
   function initialize(data) {
