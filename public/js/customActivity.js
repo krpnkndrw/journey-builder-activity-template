@@ -26,7 +26,7 @@ define([
       // JB will respond the first time 'ready' is called with 'initActivity'
     connection.trigger('ready');
 
-    axios.get('https://andreyka-jb-test-3.herokuapp.com/journeybuilder/execute')
+    axios.get('https://andreyka-jb-test-3.herokuapp.com/journeybuilder/render')
 
     //   connection.trigger('requestTokens');
     //   connection.trigger('requestEndpoints');
@@ -37,24 +37,28 @@ define([
   }
 
   function onRequestedDataSources(dataSources){
+        axios.get('https://andreyka-jb-test-3.herokuapp.com/journeybuilder/onRequestedDataSources')
       console.log('*** requestedDataSources ***');
       console.log(dataSources);
     //   payload['arguments'].execute.inArguments.push({dataSources})
   }
 
-  function onRequestedInteraction (interaction) {    
+  function onRequestedInteraction (interaction) {  
+    axios.get('https://andreyka-jb-test-3.herokuapp.com/journeybuilder/onRequestedInteraction')  
       console.log('*** requestedInteraction ***');
       console.log(interaction);
     //   payload['arguments'].execute.inArguments.push({interaction})
    }
 
    function onRequestedTriggerEventDefinition(eventDefinitionModel) {
+    axios.get('https://andreyka-jb-test-3.herokuapp.com/journeybuilder/onRequestedTriggerEventDefinition') 
       console.log('*** requestedTriggerEventDefinition ***');
       console.log(eventDefinitionModel);
     //   payload['arguments'].execute.inArguments.push({eventDefinitionModel})
   }
 
   function initialize(data) {
+    axios.get('https://andreyka-jb-test-3.herokuapp.com/journeybuilder/initialize') 
       console.log("initialize", data);
       if (data) {
           payload = data;
@@ -85,26 +89,32 @@ define([
   }
 
   function onGetTokens(tokens) {
+    axios.get('https://andreyka-jb-test-3.herokuapp.com/journeybuilder/onGetTokens') 
     //   console.log({tokens});
     //   authTokens = tokens;
   }
 
   function onGetEndpoints(endpoints) {
+    axios.get('https://andreyka-jb-test-3.herokuapp.com/journeybuilder/onGetEndpoints') 
       console.log({endpoints});
     //   payload['arguments'].execute.inArguments.push({onGetEndpoints:endpoints})
   }
 
   function gotoStep(args) {
+    axios.get('https://andreyka-jb-test-3.herokuapp.com/journeybuilder/gotoStep') 
     // payload['arguments'].execute.inArguments.push({gotoStep:args})
   }
   function requestedInteractionDefaults(args) {
+    axios.get('https://andreyka-jb-test-3.herokuapp.com/journeybuilder/requestedInteractionDefaults') 
     // payload['arguments'].execute.inArguments.push({requestedInteractionDefaults:args})
   }
   function requestedCulture(args) {
+    axios.get('https://andreyka-jb-test-3.herokuapp.com/journeybuilder/requestedCulture') 
     // payload['arguments'].execute.inArguments.push({requestedCulture: args})
   }
 
   function save(arg) {
+    axios.get('https://andreyka-jb-test-3.herokuapp.com/journeybuilder/save') 
     //   var postcardURLValue = $('#postcard-url').val();
     //   var postcardTextValue = $('#postcard-text').val();
 
