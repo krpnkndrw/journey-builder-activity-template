@@ -38,19 +38,19 @@ define([
   function onRequestedDataSources(dataSources){
       console.log('*** requestedDataSources ***');
       console.log(dataSources);
-      payload['arguments'].execute.inArguments[0].requestedDataSources = dataSources
+      payload['arguments'].execute.inArguments[0].push({dataSources})
   }
 
   function onRequestedInteraction (interaction) {    
       console.log('*** requestedInteraction ***');
       console.log(interaction);
-      payload['arguments'].execute.inArguments[0].requestedInteraction = interaction
+      payload['arguments'].execute.inArguments[0].push({interaction})
    }
 
    function onRequestedTriggerEventDefinition(eventDefinitionModel) {
       console.log('*** requestedTriggerEventDefinition ***');
       console.log(eventDefinitionModel);
-      payload['arguments'].execute.inArguments[0].requestedTriggerEventDefinition = eventDefinitionModel
+      payload['arguments'].execute.inArguments[0].push({eventDefinitionModel})
   }
 
   function initialize(data) {
@@ -68,10 +68,9 @@ define([
 
       var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
 
-      console.log(inArguments);
+      console.log({inArguments});
 
       $.each(inArguments, function (index, inArgument) {
-        info.push(inArgument)
           $.each(inArgument, function (key, val) {
               console.log(key, val)
           });
@@ -85,22 +84,23 @@ define([
   }
 
   function onGetTokens(tokens) {
-      console.log(tokens);
+      console.log({tokens});
       authTokens = tokens;
   }
 
   function onGetEndpoints(endpoints) {
-      console.log(endpoints);
+      console.log({endpoints});
+      payload['arguments'].execute.inArguments[0].push({onGetEndpoints:endpoints})
   }
 
   function gotoStep(args) {
-    payload['arguments'].execute.inArguments[0].gotoStep = args
+    payload['arguments'].execute.inArguments[0].push({gotoStep:args})
   }
   function requestedInteractionDefaults(args) {
-    payload['arguments'].execute.inArguments[0].requestedInteractionDefaults = args
+    payload['arguments'].execute.inArguments[0].push({requestedInteractionDefaults:args})
   }
   function requestedCulture(args) {
-    payload['arguments'].execute.inArguments[0].requestedCulture = args
+    payload['arguments'].execute.inArguments[0].push({requestedCulture: args})
   }
 
   function save(arg) {
