@@ -75,7 +75,6 @@ define([
           text: 'done',
           visible: true
       });
-      save()
   }
 
   function onGetTokens(tokens) {
