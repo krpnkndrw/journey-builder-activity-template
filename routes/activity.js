@@ -133,7 +133,7 @@ exports.execute = function (req, res) {
         console.error('decodedArgs', decodedArgs);
         
         logData(req);
-        console.log(JSON.stringify(decoded))
+        console.log("JSON.stringify", JSON.stringify(decoded))
         // connect()
         //   .then(() => createSuggestion(suggestion))
         //   .then(() => console.log("suggestionCreated"));
