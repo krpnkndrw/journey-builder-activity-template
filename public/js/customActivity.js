@@ -86,17 +86,17 @@ define([
       console.log(endpoints);
   }
 
-  function save() {
+  function save(arg) {
       var postcardURLValue = $('#postcard-url').val();
       var postcardTextValue = $('#postcard-text').val();
 
-      payload['arguments'].execute.inArguments.push({
+      payload['arguments'].execute.inArguments = [{
           "tokens": authTokens
-      });
+      }];
       
       payload['metaData'].isConfigured = true;
 
-      console.log(JSON.stringify(payload));
+      console.log(JSON.stringify(payload), {arg});
       connection.trigger('updateActivity', payload);
   }
 });
