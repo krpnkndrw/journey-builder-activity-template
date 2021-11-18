@@ -93,7 +93,7 @@ define([
 
       payload['arguments'].execute.inArguments = [{
           "tokens": authTokens,
-          "info":info
+          "payload":payload
       }];
       
       payload['metaData'].isConfigured = true;
