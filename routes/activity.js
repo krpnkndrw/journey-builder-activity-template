@@ -111,33 +111,38 @@ const createSuggestion = (suggestion) => {
   });
 };
 exports.execute = function (req, res) {
+  console.error('execute', {req}, {res});
 
     // example on how to decode JWT
     JWT(req.body, process.env.jwtSecret, (err, decoded) => {
+      console.error('JWT(execute)');
 
-        // verification error -> unauthorized request
-        if (err) {
-            console.error(err);
-            return res.status(401).end();
-        }
+      // verification error -> unauthorized request
+      if (err) {
+          console.error('erorr');
+          console.error(err);
+          return res.status(401).end();
+      }
 
-        if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
-            
-            
-            // decoded in arguments
-            var decodedArgs = decoded.inArguments[0];
-            
-            logData(req);
-            console.log(JSON.stringify(decoded))
-            connect()
-              .then(() => createSuggestion(suggestion))
-              .then(() => console.log("suggestionCreated"));
+      if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
+        console.error('decoded exist', decoded);
+          
+          
+        // decoded in arguments
+        var decodedArgs = decoded.inArguments[0];
+        console.error('decodedArgs', decodedArgs);
+        
+        logData(req);
+        console.log(JSON.stringify(decoded))
+        // connect()
+        //   .then(() => createSuggestion(suggestion))
+        //   .then(() => console.log("suggestionCreated"));
 
-            res.send(200, 'Execute');
-        } else {
-            console.error('inArguments invalid.');
-            return res.status(400).end();
-        }
+        res.send(200, 'Execute');
+      } else {
+        console.error('inArguments invalid.');
+        return res.status(400).end();
+      }
     });
 };
 
