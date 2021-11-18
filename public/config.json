@@ -69,12 +69,11 @@
             "execute": {
                 "inArguments": [
                   {
-                  "emailAddress": "{{InteractionDefaults.Email}}"
-                },
+                    "emailAddress": "{{InteractionDefaults.Email}}"
+                  },
                   {
                     "FirstName": "{{Contact.Attribute.JourneyEntrySource.FirstName}}"
-                  }
-                  
+                  }                  
                 ],
                 "outArguments": []
             }

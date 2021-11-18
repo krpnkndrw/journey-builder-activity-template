@@ -111,11 +111,9 @@ const createSuggestion = (suggestion) => {
   });
 };
 exports.execute = function (req, res) {
-  console.error('execute', {req}, {res});
 
     // example on how to decode JWT
     JWT(req.body, process.env.jwtSecret, (err, decoded) => {
-      console.error('JWT(execute)');
 
       // verification error -> unauthorized request
       if (err) {
@@ -125,15 +123,13 @@ exports.execute = function (req, res) {
       }
 
       if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
-        console.error('decoded exist', decoded);
+        console.error('---------->', decoded);
           
           
         // decoded in arguments
         var decodedArgs = decoded.inArguments[0];
-        console.error('decodedArgs', decodedArgs);
         
         logData(req);
-        console.log("JSON.stringify", JSON.stringify(decoded))
         // connect()
         //   .then(() => createSuggestion(suggestion))
         //   .then(() => console.log("suggestionCreated"));
