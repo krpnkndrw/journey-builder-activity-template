@@ -37,19 +37,19 @@ define([
   function onRequestedDataSources(dataSources){
       console.log('*** requestedDataSources ***');
       console.log(dataSources);
-      payload['arguments'].execute.inArguments.push({dataSources})
+    //   payload['arguments'].execute.inArguments.push({dataSources})
   }
 
   function onRequestedInteraction (interaction) {    
       console.log('*** requestedInteraction ***');
       console.log(interaction);
-      payload['arguments'].execute.inArguments.push({interaction})
+    //   payload['arguments'].execute.inArguments.push({interaction})
    }
 
    function onRequestedTriggerEventDefinition(eventDefinitionModel) {
       console.log('*** requestedTriggerEventDefinition ***');
       console.log(eventDefinitionModel);
-      payload['arguments'].execute.inArguments.push({eventDefinitionModel})
+    //   payload['arguments'].execute.inArguments.push({eventDefinitionModel})
   }
 
   function initialize(data) {
@@ -89,24 +89,24 @@ define([
 
   function onGetEndpoints(endpoints) {
       console.log({endpoints});
-      payload['arguments'].execute.inArguments.push({onGetEndpoints:endpoints})
+    //   payload['arguments'].execute.inArguments.push({onGetEndpoints:endpoints})
   }
 
   function gotoStep(args) {
-    payload['arguments'].execute.inArguments.push({gotoStep:args})
+    // payload['arguments'].execute.inArguments.push({gotoStep:args})
   }
   function requestedInteractionDefaults(args) {
-    payload['arguments'].execute.inArguments.push({requestedInteractionDefaults:args})
+    // payload['arguments'].execute.inArguments.push({requestedInteractionDefaults:args})
   }
   function requestedCulture(args) {
-    payload['arguments'].execute.inArguments.push({requestedCulture: args})
+    // payload['arguments'].execute.inArguments.push({requestedCulture: args})
   }
 
   function save(arg) {
       var postcardURLValue = $('#postcard-url').val();
       var postcardTextValue = $('#postcard-text').val();
 
-      payload['arguments'].execute.inArguments.push({"tokens": authTokens});
+    //   payload['arguments'].execute.inArguments.push({"tokens": authTokens});
       
       payload['metaData'].isConfigured = true;
 
