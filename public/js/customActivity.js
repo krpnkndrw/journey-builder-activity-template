@@ -26,6 +26,8 @@ define([
       // JB will respond the first time 'ready' is called with 'initActivity'
     connection.trigger('ready');
 
+    console.log(axios)
+
     //   connection.trigger('requestTokens');
     //   connection.trigger('requestEndpoints');
     //   connection.trigger('requestInteraction');
@@ -53,7 +55,7 @@ define([
   }
 
   function initialize(data) {
-      console.log(data);
+      console.log("initialize", data);
       if (data) {
           payload = data;
       }
