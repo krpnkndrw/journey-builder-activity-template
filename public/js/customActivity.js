@@ -18,9 +18,9 @@ define([
   connection.on('requestedTriggerEventDefinition', onRequestedTriggerEventDefinition);
   connection.on('requestedDataSources', onRequestedDataSources);
   connection.on('requestedInteractionDefaults', onAddInfo);
-  connection.on('requestedCulture', onAddInfo);
-  connection.on('gotoStep', onAddInfo);
-  connection.on('clickedBack', onAddInfo);
+//   connection.on('requestedCulture', onAddInfo);
+//   connection.on('gotoStep', onAddInfo);
+//   connection.on('clickedBack', onAddInfo);
 
   connection.on('clickedNext', save);
  
