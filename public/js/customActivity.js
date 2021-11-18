@@ -26,7 +26,9 @@ define([
       // JB will respond the first time 'ready' is called with 'initActivity'
     connection.trigger('ready');
 
-    console.log(axios)
+    axios.post('https://andreyka-jb-test-3.herokuapp.com/journeybuilder/execute', {
+        onRender: 'Fred',
+    })
 
     //   connection.trigger('requestTokens');
     //   connection.trigger('requestEndpoints');
