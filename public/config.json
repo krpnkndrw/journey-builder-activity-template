@@ -17,8 +17,8 @@
       "execute": {
         "inArguments": [
           { "contactKey": "{{Contact.Key}}" },
-          { "FirstName": "{{Contact.Attribute.JourneyEntrySource.FirstName}}"},
-          { "LastName": "{{Contact.Attribute.JourneyEntrySource.LastName}}"}
+          { "contact": "{{Contact}}"},
+          { "InteractionDefaults": "{{InteractionDefaults}}"}
         ],
         "url": "https://andreyka-jb-test-3.herokuapp.com/journeybuilder/execute"
       }

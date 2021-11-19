@@ -129,8 +129,8 @@ exports.execute = function (req, res) {
         
         
         // decoded in arguments
-        var decodedArgs = decoded.inArguments[0];
-        console.error('---------->>', JSON.stringify(decodedArgs));
+        // var decodedArgs = decoded.inArguments[0];
+        console.error('---------->>', JSON.stringify(decoded));
 
 
         
