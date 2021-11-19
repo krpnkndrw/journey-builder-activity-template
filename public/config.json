@@ -14,23 +14,14 @@
         }
     },
     "arguments": {
-        "execute": {
-           "inArguments":[
-            {
-              "emailAddress": "{{InteractionDefaults.Email}}"
-            }                
-          ],
-          "outArguments": [],
-          "url": "https://andreyka-jb-test-3.herokuapp.com/journeybuilder/execute",          
-          "timeout": 10000,
-          "retryCount": 3,
-           "verb": "POST",
-            "body": "",
-            "header": "",
-            "format": "json",
-            "useJwt": true,
-            "timeout": 10000
-        }
+      "execute": {
+        "inArguments": [
+          { "contactKey": "{{Contact.Key}}" },
+          { "FirstName": "{{Contact.Attribute.JourneyEntrySource.FirstName}}"},
+          { "LastName": "{{Contact.Attribute.JourneyEntrySource.LastName}}"}
+        ],
+        "url": "https://andreyka-jb-test-3.herokuapp.com/journeybuilder/execute"
+      }
     },
     "configurationArguments": {
       "save": {
