@@ -19,3 +19,4 @@ connection.on('clickedNext', function() {
   var configuration = JSON.parse( document.getElementById( 'configuration' ).value );
   connection.trigger('updateActivity', configuration);
 });
+})
