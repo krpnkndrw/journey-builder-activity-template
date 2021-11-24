@@ -16,44 +16,38 @@ define([
   connection.on('requestedInteraction', onRequestedInteraction);
   connection.on('requestedTriggerEventDefinition', onRequestedTriggerEventDefinition);
   connection.on('requestedDataSources', onRequestedDataSources);
-  connection.on('requestedInteractionDefaults', requestedInteractionDefaults);
-  connection.on('requestedCulture', requestedCulture);
-  connection.on('gotoStep', gotoStep);
 
   connection.on('clickedNext', save);
  
   function onRender() {
       // JB will respond the first time 'ready' is called with 'initActivity'
-    connection.trigger('ready');
+      connection.trigger('ready');
 
-    //   connection.trigger('requestTokens');
-    //   connection.trigger('requestEndpoints');
-    //   connection.trigger('requestInteraction');
-    //   connection.trigger('requestTriggerEventDefinition');
-    //   connection.trigger('requestDataSources');  
+      connection.trigger('requestTokens');
+      connection.trigger('requestEndpoints');
+      connection.trigger('requestInteraction');
+      connection.trigger('requestTriggerEventDefinition');
+      connection.trigger('requestDataSources');  
+
   }
 
   function onRequestedDataSources(dataSources){
       console.log('*** requestedDataSources ***');
       console.log(dataSources);
-    //   payload['arguments'].execute.inArguments.push({dataSources})
   }
 
-  function onRequestedInteraction (interaction) {  
+  function onRequestedInteraction (interaction) {    
       console.log('*** requestedInteraction ***');
       console.log(interaction);
-    //   payload['arguments'].execute.inArguments.push({interaction})
    }
 
    function onRequestedTriggerEventDefinition(eventDefinitionModel) {
       console.log('*** requestedTriggerEventDefinition ***');
       console.log(eventDefinitionModel);
-    //   payload['arguments'].execute.inArguments.push({eventDefinitionModel})
   }
 
   function initialize(data) {
-    document.getElementById( 'configuration' ).value = JSON.stringify( data, null, 2 );
-      console.log("initialize", data);
+      console.log(data);
       if (data) {
           payload = data;
       }
@@ -67,11 +61,14 @@ define([
 
       var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
 
-    //   $.each(inArguments, function (index, inArgument) {
-    //       $.each(inArgument, function (key, val) {
-    //           console.log(key, val)
-    //       });
-    //   });
+      console.log(inArguments);
+
+      $.each(inArguments, function (index, inArgument) {
+          $.each(inArgument, function (key, val) {
+              
+            
+          });
+      });
 
       connection.trigger('updateButton', {
           button: 'next',
@@ -80,37 +77,28 @@ define([
       });
   }
 
-  function onGetTokens(tokens) { 
-    //   console.log({tokens});
+  function onGetTokens(tokens) {
+      console.log(tokens);
       authTokens = tokens;
   }
 
   function onGetEndpoints(endpoints) {
-      console.log({endpoints});
-    //   payload['arguments'].execute.inArguments.push({onGetEndpoints:endpoints})
+      console.log(endpoints);
   }
 
-  function gotoStep(args) {
-    // payload['arguments'].execute.inArguments.push({gotoStep:args})
-  }
-  function requestedInteractionDefaults(args) {
-    // payload['arguments'].execute.inArguments.push({requestedInteractionDefaults:args})
-  }
-  function requestedCulture(args) {
-    // payload['arguments'].execute.inArguments.push({requestedCulture: args})
-  }
+  function save() {
+      var postcardURLValue = $('#postcard-url').val();
+      var postcardTextValue = $('#postcard-text').val();
 
-  function save(arg) {
-    //   var postcardURLValue = $('#postcard-url').val();
-    //   var postcardTextValue = $('#postcard-text').val();
-
-    payload['arguments'].execute.inArguments.push({"tokens": authTokens});
+      payload['arguments'].execute.inArguments = [{
+          "tokens": authTokens
+      }];
       
-    //   payload['metaData'].isConfigured = true;
+      payload['metaData'].isConfigured = true;
 
-    //   console.log(JSON.stringify(payload));
-    var configuration = JSON.parse( document.getElementById( 'configuration' ).value );
-    console.log("save", JSON.stringify(payload), JSON.stringify(configuration))
-    connection.trigger('updateActivity', payload);
+      console.log(payload);
+      connection.trigger('updateActivity', payload);
   }
+
+
 });
