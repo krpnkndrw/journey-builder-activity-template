@@ -117,16 +117,3 @@ exports.validate = function (req, res) {
     logData(req);
     res.send(200, 'Validate');
 };
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Loading complete
