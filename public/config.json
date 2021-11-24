@@ -8,22 +8,23 @@
     "type": "REST",
     "lang": {
         "en-US": {
-            "name": "AndreyKa Custom activity",
-          "description": "AndreyKa custom activity",
-          "step1Label": "AndreyKa Configure Activity"
+            "name": "AndreyKa Custom activity name",
+          "description": "AndreyKa custom activity description",
+          "step1Label": "AndreyKa Configure Activity step1Label"
         }
     },
     "arguments": {
-      "execute": {        
-        "inArguments": [
-          { "contactKey": "{{Contact.Key}}" },
-          { "email": "{{Contact.Attribute.JourneyEntrySource.email}}"},
-          { "FirstName": "{{Contact.Attribute.JourneyEntrySource.FirstName}}"},
-          { "account_id": "{{Contact.Attribute.JourneyEntrySource.account_id}}"},
-          { "id": "{{Contact.Attribute.JourneyEntrySource.id}}"}
-        ],
-        "url": "https://andreyka-jb-test-3.herokuapp.com/journeybuilder/execute"
-      }
+        "execute": {                 
+          "inArguments": [],
+          "outArguments": [],
+          "url": "https://andreyka-jb-test-3.herokuapp.com/journeybuilder/execute",
+           "verb": "POST",
+            "body": "",
+            "header": "",
+            "format": "json",
+            "useJwt": true,
+            "timeout": 10000
+        }
     },
     "configurationArguments": {
       "save": {
@@ -58,26 +59,11 @@
         }
     },
     "schema": {
-      "arguments": {
-        "execute": {
-          "inArguments": [
-            {
-              "name": {
-                "dataType": "FirstName",
-                "isNullable": false,
-                "direction": "in"
-              }
-            },
-            {
-              "email": {
-                "dataType": "Email",
-                "isNullable": false,
-                "direction": "in"
-              }
+        "arguments": {
+            "execute": {
+                "inArguments": [],
+                "outArguments": []
             }
-          ],
-          "outArguments": []
         }
-      }
     }
 }
