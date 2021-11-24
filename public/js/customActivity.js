@@ -82,7 +82,7 @@ define([
 
   function onGetTokens(tokens) { 
     //   console.log({tokens});
-    //   authTokens = tokens;
+      authTokens = tokens;
   }
 
   function onGetEndpoints(endpoints) {
@@ -110,7 +110,7 @@ define([
 
     //   console.log(JSON.stringify(payload));
     var configuration = JSON.parse( document.getElementById( 'configuration' ).value );
-    console.log("save", {payload}, {configuration})
+    console.log("save", JSON.stringify(payload), JSON.stringify(configuration))
     connection.trigger('updateActivity', payload);
   }
 });
