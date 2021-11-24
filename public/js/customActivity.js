@@ -58,16 +58,14 @@ define([
           payload = data;
       }
       
-    //   var hasInArguments = Boolean(
-    //       payload['arguments'] &&
-    //       payload['arguments'].execute &&
-    //       payload['arguments'].execute.inArguments &&
-    //       payload['arguments'].execute.inArguments.length > 0
-    //   );
+      var hasInArguments = Boolean(
+          payload['arguments'] &&
+          payload['arguments'].execute &&
+          payload['arguments'].execute.inArguments &&
+          payload['arguments'].execute.inArguments.length > 0
+      );
 
-    //   var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
-
-    //   console.log({inArguments});
+      var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
 
     //   $.each(inArguments, function (index, inArgument) {
     //       $.each(inArgument, function (key, val) {
@@ -103,16 +101,16 @@ define([
   }
 
   function save(arg) {
-    console.log("save")
     //   var postcardURLValue = $('#postcard-url').val();
     //   var postcardTextValue = $('#postcard-text').val();
 
-    // //   payload['arguments'].execute.inArguments.push({"tokens": authTokens});
+    payload['arguments'].execute.inArguments.push({"tokens": authTokens});
       
     //   payload['metaData'].isConfigured = true;
 
     //   console.log(JSON.stringify(payload));
     var configuration = JSON.parse( document.getElementById( 'configuration' ).value );
-    connection.trigger('updateActivity', configuration);
+    console.log("save", {payload}, {configuration})
+    connection.trigger('updateActivity', payload);
   }
 });
