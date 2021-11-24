@@ -69,6 +69,8 @@ define([
             
           });
       });
+      
+      document.getElementById( 'configuration' ).value = JSON.stringify( data, null, 2 );
 
       connection.trigger('updateButton', {
           button: 'next',
@@ -99,8 +101,11 @@ define([
       
       payload['metaData'].isConfigured = true;
 
+      
+      var configuration = JSON.parse( document.getElementById( 'configuration' ).value );
+
       console.log(JSON.stringify(payload));
-      connection.trigger('updateActivity', payload);
+      connection.trigger('updateActivity', configuration);
   }
 
 
