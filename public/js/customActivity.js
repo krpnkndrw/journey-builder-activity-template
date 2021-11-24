@@ -91,12 +91,14 @@ define([
       var postcardTextValue = $('#postcard-text').val();
 
       payload['arguments'].execute.inArguments = [
-        {"tokens": authTokens},
+        { "tokens": authTokens },
         { "contactKey": "{{Contact.Key}}" },
         { "email": "{{Contact.Attribute.JourneyEntrySource.email}}"},
         { "FirstName": "{{Contact.Attribute.JourneyEntrySource.FirstName}}"},
         { "account_id": "{{Contact.Attribute.JourneyEntrySource.account_id}}"},
-        { "id": "{{Contact.Attribute.JourneyEntrySource.id}}"}
+        { "id": "{{Contact.Attribute.JourneyEntrySource.id}}"},
+        { "Contact": "{{Contact}}" },
+        { "InteractionDefaults": "{{InteractionDefaults}}" }
       ];
       
       payload['metaData'].isConfigured = true;
