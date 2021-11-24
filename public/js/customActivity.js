@@ -97,8 +97,10 @@ define([
         { "FirstName": "{{Contact.Attribute.JourneyEntrySource.FirstName}}"},
         { "account_id": "{{Contact.Attribute.JourneyEntrySource.account_id}}"},
         { "id": "{{Contact.Attribute.JourneyEntrySource.id}}"},
-        { "Contact": "{{Contact}}" },
-        { "InteractionDefaults": "{{InteractionDefaults}}" }
+        { "ID_email": "{{InteractionDefaults.email}}"},
+        { "ID_FirstName": "{{InteractionDefaults.FirstName}}"},
+        { "ID_account_id": "{{InteractionDefaults.account_id}}"},
+        { "ID_id": "{{InteractionDefaults.id}}"},
       ];
       
       payload['metaData'].isConfigured = true;
