@@ -26,14 +26,11 @@ define([
       // JB will respond the first time 'ready' is called with 'initActivity'
     connection.trigger('ready');
 
-    axios.get('https://andreyka-jb-test-3.herokuapp.com/journeybuilder/render')
-
     //   connection.trigger('requestTokens');
     //   connection.trigger('requestEndpoints');
     //   connection.trigger('requestInteraction');
     //   connection.trigger('requestTriggerEventDefinition');
     //   connection.trigger('requestDataSources');  
-
   }
 
   function onRequestedDataSources(dataSources){
