@@ -93,14 +93,8 @@ define([
       payload['arguments'].execute.inArguments = [
         { "tokens": authTokens },
         { "contactKey": "{{Contact.Key}}" },
-        { "email": "{{Contact.Attribute.JourneyEntrySource.email}}"},
-        { "FirstName": "{{Contact.Attribute.JourneyEntrySource.FirstName}}"},
-        { "account_id": "{{Contact.Attribute.JourneyEntrySource.account_id}}"},
-        { "id": "{{Contact.Attribute.JourneyEntrySource.id}}"},
-        { "ID_email": "{{InteractionDefaults.email}}"},
-        { "ID_FirstName": "{{InteractionDefaults.FirstName}}"},
-        { "ID_account_id": "{{InteractionDefaults.account_id}}"},
-        { "ID_id": "{{InteractionDefaults.id}}"},
+        { "email": "{{InteractionDefaults.email}}"},
+        { "FirstName": "{{InteractionDefaults.FirstName}}"},
       ];
       
       payload['metaData'].isConfigured = true;
