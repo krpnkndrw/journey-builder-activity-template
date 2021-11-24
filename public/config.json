@@ -15,11 +15,7 @@
     },
     "arguments": {
         "execute": {
-           "inArguments":[
-             {
-               "FirstName": "{{Contact.Attribute.JourneyEntrySource.FirstName}}"
-              }
-           ],
+           "inArguments":[],
           "outArguments": [],
           "url": "https://andreyka-jb-test2.herokuapp.com/journeybuilder/execute",
            "verb": "POST",
