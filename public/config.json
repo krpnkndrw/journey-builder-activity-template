@@ -8,14 +8,14 @@
     "type": "REST",
     "lang": {
         "en-US": {
-            "name": "Custom activity",
+            "name": "AndreyKa Custom activity",
           "description": "AndreyKa custom activity",
-          "step1Label": "Configure Activity"
+          "step1Label": "AndreyKa Configure Activity"
         }
     },
     "arguments": {
       "execute": {
-        "inArguments": [],
+        "inArguments": [{"abc":"abc"}],
         "url": "https://andreyka-jb-test-3.herokuapp.com/journeybuilder/execute"
       }
     },
