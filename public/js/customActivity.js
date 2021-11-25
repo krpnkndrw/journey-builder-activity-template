@@ -97,17 +97,14 @@ define([
         
         var configuration = JSON.parse( document.getElementById( 'configuration' ).value );
 
-        configuration['arguments'].execute.inArguments.push(...[
+        configuration['arguments'].execute.inArguments = [
             { "tokens": authTokens },
             { "contactKey": "{{Contact.Key}}" },
-            { "email": "{{InteractionDefaults.email}}"}
-        ]);
-            // { "email2": "{{Contact.Attribute.Andrey_test.email}}"},
-            // { "FirstName": "{{Contact.Attribute.Andrey_test.FirstName}}"},
-            // { "account_id": "{{Contact.Attribute.Andrey_test.account_id}}"},
-            // { "id": "{{Contact.Attribute.Andrey_test.id}}"}
+            { "FirstName": "{{Contact.Attribute.AndreyKa_test.first_name}}" },
+            { "email": "{{Contact.Attribute.AndreyKa_test.email}}" }
+        ];
         
-            configuration['metaData'].isConfigured = true;        
+        configuration['metaData'].isConfigured = true;        
 
         connection.trigger('updateActivity', configuration);
     }
