@@ -70,7 +70,6 @@ define([
           });
       });
       
-      document.getElementById( 'configuration' ).value = JSON.stringify( data, null, 2 );
 
       connection.trigger('updateButton', {
           button: 'next',
@@ -89,23 +88,30 @@ define([
   }
 
   function save() {
-      var postcardURLValue = $('#postcard-url').val();
-      var postcardTextValue = $('#postcard-text').val();
+      try{          
+        var postcardURLValue = $('#postcard-url').val();
+        var postcardTextValue = $('#postcard-text').val();
 
-      payload['arguments'].execute.inArguments = [
-        { "tokens": authTokens },
-        { "contactKey": "{{Contact.Key}}" },
-        { "email": "{{InteractionDefaults.email}}"},
-        { "FirstName": "{{InteractionDefaults.FirstName}}"},
-      ];
-      
-      payload['metaData'].isConfigured = true;
+        payload['arguments'].execute.inArguments = [
+            { "tokens": authTokens },
+            { "contactKey": "{{Contact.Key}}" },
+            { "email": "{{InteractionDefaults.email}}"}
+        ];
+            // { "email2": "{{Contact.Attribute.Andrey_test.email}}"},
+            // { "FirstName": "{{Contact.Attribute.Andrey_test.FirstName}}"},
+            // { "account_id": "{{Contact.Attribute.Andrey_test.account_id}}"},
+            // { "id": "{{Contact.Attribute.Andrey_test.id}}"}
+        
+        payload['metaData'].isConfigured = true;
+        
+        var configuration = JSON.parse( document.getElementById( 'configuration' ).value );
 
-      
-      var configuration = JSON.parse( document.getElementById( 'configuration' ).value );
-
-      console.log(JSON.stringify(payload));
-      connection.trigger('updateActivity', configuration);
+        console.log(JSON.stringify(payload));
+        connection.trigger('updateActivity', configuration);
+    }
+    catch(err){
+        console.log(err)
+    }
   }
 
 
