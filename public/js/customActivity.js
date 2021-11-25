@@ -7,7 +7,7 @@ define([
 
   var connection = new Postmonger.Session();
   var authTokens = {};
-  var payload = {};
+//   var payload = {};
   $(window).ready(onRender);
 
   connection.on('initActivity', initialize);
@@ -48,29 +48,27 @@ define([
 
   function initialize(data) {
       console.log(data);
-      if (data) {
-          payload = data;
-      }
+    //   if (data) {
+    //       payload = data;
+    //   }
       
-      var hasInArguments = Boolean(
-          payload['arguments'] &&
-          payload['arguments'].execute &&
-          payload['arguments'].execute.inArguments &&
-          payload['arguments'].execute.inArguments.length > 0
-      );
+    //   var hasInArguments = Boolean(
+    //       payload['arguments'] &&
+    //       payload['arguments'].execute &&
+    //       payload['arguments'].execute.inArguments &&
+    //       payload['arguments'].execute.inArguments.length > 0
+    //   );
 
-      var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
+    //   var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
 
-      console.log(inArguments);
+    //   console.log(inArguments);
 
       document.getElementById( 'configuration' ).value = JSON.stringify( data, null, 2 );
 
-      $.each(inArguments, function (index, inArgument) {
-          $.each(inArgument, function (key, val) {
-              
-            
-          });
-      });
+    //   $.each(inArguments, function (index, inArgument) {
+    //       $.each(inArgument, function (key, val) { 
+    //       });
+    //   });
       
 
       connection.trigger('updateButton', {
@@ -97,12 +95,12 @@ define([
         
         var configuration = JSON.parse( document.getElementById( 'configuration' ).value );
 
-        // configuration['arguments'].execute.inArguments = [
-        //     { "tokens": authTokens },
-        //     { "contactKey": "{{Contact.Key}}" },
-        //     { "FirstName": "{{Contact.Attribute.AndreyKa_test.first_name}}" },
-        //     { "email": "{{Contact.Attribute.AndreyKa_test.email}}" }
-        // ];
+        configuration['arguments'].execute.inArguments = [
+            { "tokens": authTokens },
+            { "contactKey": "{{Contact.Key}}" },
+            { "FirstName": "{{Contact.Attribute.AndreyKa_test.first_name}}" },
+            { "email": "{{Contact.Attribute.AndreyKa_test.email}}" }
+        ];
         
         configuration['metaData'].isConfigured = true;        
 
