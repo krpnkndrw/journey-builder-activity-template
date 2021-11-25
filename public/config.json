@@ -15,7 +15,11 @@
   },
   "arguments": {
       "execute": {
-         "inArguments":[],
+        "inArguments":[
+          { "contactKey": "{{Contact.Key}}" },
+          { "FirstName": "{{Contact.Attribute.AndreyKa_test.first_name}}" },
+          { "email": "{{Contact.Attribute.AndreyKa_test.email}}" }
+        ],
         "outArguments": [],
         "url": "https://andreyka-jb-test-3.herokuapp.com/journeybuilder/execute",
          "verb": "POST",

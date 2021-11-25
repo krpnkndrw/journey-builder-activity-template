@@ -97,12 +97,12 @@ define([
         
         var configuration = JSON.parse( document.getElementById( 'configuration' ).value );
 
-        configuration['arguments'].execute.inArguments = [
-            { "tokens": authTokens },
-            { "contactKey": "{{Contact.Key}}" },
-            { "FirstName": "{{Contact.Attribute.AndreyKa_test.first_name}}" },
-            { "email": "{{Contact.Attribute.AndreyKa_test.email}}" }
-        ];
+        // configuration['arguments'].execute.inArguments = [
+        //     { "tokens": authTokens },
+        //     { "contactKey": "{{Contact.Key}}" },
+        //     { "FirstName": "{{Contact.Attribute.AndreyKa_test.first_name}}" },
+        //     { "email": "{{Contact.Attribute.AndreyKa_test.email}}" }
+        // ];
         
         configuration['metaData'].isConfigured = true;        
 
