@@ -7,7 +7,6 @@ define([
 
   var connection = new Postmonger.Session();
   var authTokens = {};
-//   var payload = {};
   $(window).ready(onRender);
 
   connection.on('initActivity', initialize);
@@ -36,7 +35,7 @@ define([
       console.log(dataSources);
   }
 
-  function onRequestedInteraction (interaction) {    
+  function onRequestedInteraction(interaction) {    
       console.log('*** requestedInteraction ***');
       console.log(interaction);
    }
@@ -48,28 +47,8 @@ define([
 
   function initialize(data) {
       console.log(data);
-    //   if (data) {
-    //       payload = data;
-    //   }
-      
-    //   var hasInArguments = Boolean(
-    //       payload['arguments'] &&
-    //       payload['arguments'].execute &&
-    //       payload['arguments'].execute.inArguments &&
-    //       payload['arguments'].execute.inArguments.length > 0
-    //   );
 
-    //   var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
-
-    //   console.log(inArguments);
-
-      document.getElementById( 'configuration' ).value = JSON.stringify( data, null, 2 );
-
-    //   $.each(inArguments, function (index, inArgument) {
-    //       $.each(inArgument, function (key, val) { 
-    //       });
-    //   });
-      
+      document.getElementById( 'configuration' ).value = JSON.stringify( data, null, 2 );     
 
       connection.trigger('updateButton', {
           button: 'next',
@@ -89,10 +68,6 @@ define([
 
   function save() {
       try{          
-        var postcardURLValue = $('#postcard-url').val();
-        var postcardTextValue = $('#postcard-text').val();
-
-        
         var configuration = JSON.parse( document.getElementById( 'configuration' ).value );
 
         configuration['arguments'].execute.inArguments = [
@@ -110,6 +85,4 @@ define([
         console.log(err)
     }
   }
-
-
 });
