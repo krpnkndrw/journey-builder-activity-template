@@ -63,6 +63,8 @@ define([
 
       console.log(inArguments);
 
+      document.getElementById( 'configuration' ).value = JSON.stringify( data, null, 2 );
+
       $.each(inArguments, function (index, inArgument) {
           $.each(inArgument, function (key, val) {
               
@@ -92,21 +94,21 @@ define([
         var postcardURLValue = $('#postcard-url').val();
         var postcardTextValue = $('#postcard-text').val();
 
-        payload['arguments'].execute.inArguments = [
+        
+        var configuration = JSON.parse( document.getElementById( 'configuration' ).value );
+
+        configuration['arguments'].execute.inArguments.push(...[
             { "tokens": authTokens },
             { "contactKey": "{{Contact.Key}}" },
             { "email": "{{InteractionDefaults.email}}"}
-        ];
+        ]);
             // { "email2": "{{Contact.Attribute.Andrey_test.email}}"},
             // { "FirstName": "{{Contact.Attribute.Andrey_test.FirstName}}"},
             // { "account_id": "{{Contact.Attribute.Andrey_test.account_id}}"},
             // { "id": "{{Contact.Attribute.Andrey_test.id}}"}
         
-        payload['metaData'].isConfigured = true;
-        
-        var configuration = JSON.parse( document.getElementById( 'configuration' ).value );
+            configuration['metaData'].isConfigured = true;        
 
-        console.log(JSON.stringify(payload));
         connection.trigger('updateActivity', configuration);
     }
     catch(err){
