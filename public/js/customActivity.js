@@ -67,47 +67,46 @@ define([
   }
 
   function save() {
-      try{          
+      try{
         var configuration = JSON.parse( document.getElementById( 'configuration' ).value );
 
-        // configuration['arguments'].execute.inArguments = [
+        configuration['arguments'].execute.inArguments = [
         //     { "tokens": authTokens },
         //     // { "contactKey": "{{Contact.Key}}" },
         //     // { "FirstName": "{{Contact.Attribute.AndreyKa_test.first_name}}" },
         //     // { "email": "{{Contact.Attribute.AndreyKa_test.email}}" }
-        //     {
-        //         "account_id": "{{Contact.Attribute.AZ_test_1.account_id}}"
-        //       },
-        //       {
-        //         "medical_rep_id": "{{Contact.Attribute.AZ_test_1.medical_rep_id}}"
-        //       },
-        //       {
-        //         "created_date": "{{Contact.Attribute.AZ_test_1.created_date}}"
-        //       },
-        //       {
-        //         "first_name": "{{Contact.Attribute.AZ_test_1.first_name}}"
-        //       },
-        //       {
-        //         "last_name": "{{Contact.Attribute.AZ_test_1.last_name}}"
-        //       },
-        //       {
-        //         "last_modified_medical_rep": "{{Contact.Attribute.AZ_test_1.last_modified_medical_rep}}"
-        //       },
-        //       {
-        //         "last_modified_date": "{{Contact.Attribute.AZ_test_1.last_modified_date}}"
-        //       },
-        //       {
-        //         "email": "{{Contact.Attribute.AZ_test_1.email}}"
-        //       },
-        //       {
-        //         "specialty_1": "{{Contact.Attribute.AZ_test_1.specialty_1}}"
-        //       },
-        //       {
-        //         "specialty_2": "{{Contact.Attribute.AZ_test_1.specialty_2}}"
-        //       }
-        // ];
-        
-        configuration['metaData'].isConfigured = true;        
+            {
+                "account_id": "{{Contact.Attribute.AZ_test_1.account_id}}"
+              },
+              {
+                "medical_rep_id": "{{Contact.Attribute.AZ_test_1.medical_rep_id}}"
+              },
+              {
+                "created_date": "{{Contact.Attribute.AZ_test_1.created_date}}"
+              },
+              {
+                "first_name": "{{Contact.Attribute.AZ_test_1.first_name}}"
+              },
+              {
+                "last_name": "{{Contact.Attribute.AZ_test_1.last_name}}"
+              },
+              {
+                "last_modified_medical_rep": "{{Contact.Attribute.AZ_test_1.last_modified_medical_rep}}"
+              },
+              {
+                "last_modified_date": "{{Contact.Attribute.AZ_test_1.last_modified_date}}"
+              },
+              {
+                "email": "{{Contact.Attribute.AZ_test_1.email}}"
+              },
+              {
+                "specialty_1": "{{Contact.Attribute.AZ_test_1.specialty_1}}"
+              },
+              {
+                "specialty_2": "{{Contact.Attribute.AZ_test_1.specialty_2}}"
+              }
+        ];
+        configuration['metaData'].isConfigured = true;
 
         connection.trigger('updateActivity', configuration);
     }
